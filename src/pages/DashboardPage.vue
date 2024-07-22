@@ -16,11 +16,11 @@
 </script>
 
 <template>
-  <h1 class="text-gray-100 bg-amber-300">Dashboard ♟️ Example Page</h1>
+  <h1 class="text-gray-100 bg-amber-300 flex-1 max-h-1">Dashboard ♟️ Example Page</h1>
   <Icon type="logo-bitcoin" />
   <Space>
     <p>Internationalization / i18n locale:</p>
-    <Select v-model="locale" @on-change="handleLanguageChange" style="width: 200px">
+    <Select v-model="locale" style="width: 200px" @on-change="handleLanguageChange">
       <Option v-for="lang in languages" :key="lang.value" :value="lang.value">
         {{ lang.label }}
       </Option>
