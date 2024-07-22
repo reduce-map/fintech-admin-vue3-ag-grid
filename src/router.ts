@@ -1,18 +1,14 @@
-import {
-  createRouter,
-  createWebHistory,
-  RouteLocationNormalizedGeneric,
-} from "vue-router";
+import { createRouter, createWebHistory, RouteLocationNormalizedGeneric } from 'vue-router'
 // import { useAuthStore } from '@/store/auth';
-import ViewUIPlus from "view-ui-plus";
+import ViewUIPlus from 'view-ui-plus'
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
-      path: "/",
-      component: () => import("./pages/DashboardPage.vue"),
-      name: "dashboard",
+      path: '/',
+      component: () => import('./pages/DashboardPage.vue'),
+      name: 'dashboard',
     },
     // {
     //   path: "/settings",
@@ -35,7 +31,7 @@ const router = createRouter({
     //   name: "bot",
     // },
   ],
-});
+})
 
 // router.beforeEach(async (to, from) => {
 //   const authStore = useAuthStore();
@@ -51,19 +47,13 @@ const router = createRouter({
 //   }
 // });
 
-router.beforeEach(
-  (
-    _: RouteLocationNormalizedGeneric,
-    __: RouteLocationNormalizedGeneric,
-    next,
-  ) => {
-    ViewUIPlus.LoadingBar.start();
-    next();
-  },
-);
+router.beforeEach((_: RouteLocationNormalizedGeneric, __: RouteLocationNormalizedGeneric, next) => {
+  ViewUIPlus.LoadingBar.start()
+  next()
+})
 
 router.afterEach(() => {
-  ViewUIPlus.LoadingBar.finish();
-});
+  ViewUIPlus.LoadingBar.finish()
+})
 
-export default router;
+export default router
