@@ -6,7 +6,6 @@
     horizontalSplit?: number
   }
 
-  // Задание дефолтных значений пропсов
   const props = withDefaults(defineProps<Props>(), {
     verticalSplit: 0.3,
     horizontalSplit: 0.4,
@@ -17,9 +16,6 @@
 </script>
 
 <template>
-  <slot name="beforeMain">
-    <!--    BeforeMain slot-->
-  </slot>
   <div class="layout-container">
     <Split v-model="localVerticalSplit" mode="vertical">
       <template #top>
@@ -64,9 +60,5 @@
   .layout-pane.no-padding {
     height: 100%;
     padding: 0;
-  }
-
-  .layout-pane-bottom {
-    //background: #eee;
   }
 </style>

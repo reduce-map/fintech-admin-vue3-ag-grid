@@ -1,38 +1,48 @@
 <script setup lang="ts">
-  import { ref, computed } from 'vue'
+  import { computed, Ref, ref, watch } from 'vue'
   import { useRoute } from 'vue-router'
+  import { useSettingsStore } from '@/store/settings.ts'
 
-  const isCollapsed = ref(true)
+  const settingsStore = useSettingsStore()
   const route = useRoute()
 
   const activeMenuItem = computed(() => route.name)
-
   const menuitemClasses = computed(() => ['menu-item', isCollapsed.value ? 'collapsed-menu' : ''])
+
+  interface ToggleableHTMLElement extends HTMLElement {
+    toggleCollapse: () => void
+  }
+  const sider: Ref<ToggleableHTMLElement | null> = ref(null)
+
+  const isCollapsed = ref(settingsStore.isCollapsed)
+
+  const handleCollapseChange = (newValue: boolean) => {
+    settingsStore.setCollapsed(newValue)
+    sider.value?.toggleCollapse()
+  }
+
+  watch(
+    () => settingsStore.isCollapsed,
+    (newValue: boolean) => {
+      isCollapsed.value = newValue
+      handleCollapseChange(newValue)
+    }
+  )
+
+  watch(isCollapsed, handleCollapseChange)
 </script>
 
 <template>
   <Layout class="min-h-screen">
-    <Sider collapsible :collapsed-width="78" v-model="isCollapsed">
+    <Sider ref="sider" collapsible :collapsed-width="78" v-model="isCollapsed">
       <Menu :active-name="activeMenuItem" theme="dark" width="auto" :class="menuitemClasses">
         <MenuItem name="dashboard" :to="{ name: 'dashboard' }">
           <Icon type="ios-navigate" />
           <span>Dashboard</span>
         </MenuItem>
-        <MenuItem name="bot" :to="{ name: 'bot', params: { id: 27 } }">
-          <Icon type="md-ionitron" />
-          <span>Bot</span>
-        </MenuItem>
-        <MenuItem name="reports" :to="{ name: 'reports' }">
-          <Icon type="ios-paper" />
-          <span>Reports</span>
-        </MenuItem>
         <MenuItem name="settings" :to="{ name: 'settings' }">
           <Icon type="ios-settings" />
           <span>Settings</span>
-        </MenuItem>
-        <MenuItem name="coingecko" :to="{ name: 'coingecko' }">
-          <Icon type="logo-bitcoin" />
-          <span>Coingecko</span>
         </MenuItem>
       </Menu>
     </Sider>
