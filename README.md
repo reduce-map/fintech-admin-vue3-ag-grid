@@ -77,3 +77,9 @@ Before each commit, the `precommit` script is run. This script triggers [ESLint]
 ### pre-push
 
 Before each push, the test suite is run to ensure that all tests pass. If any tests fail, the push will be aborted.
+
+Dev notes:
+
+- Tnx to
+  - https://github.com/zhixiangyao/vite-vue-ts-starter eslint9 + prettier
+  -
