@@ -5,6 +5,8 @@ import router from './router'
 import i18n from './i18n'
 import pinia from './store'
 
+import 'view-ui-plus/dist/styles/viewuiplus.css'
+import './design/view-ui-plus-theme.less'
 import './design/style.scss'
 
 const app = createApp(App)

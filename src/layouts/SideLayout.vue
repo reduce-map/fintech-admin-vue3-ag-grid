@@ -12,13 +12,13 @@
   interface ToggleableHTMLElement extends HTMLElement {
     toggleCollapse: () => void
   }
-  const sider: Ref<ToggleableHTMLElement | null> = ref(null)
+  const sideBarRef: Ref<ToggleableHTMLElement | null> = ref(null)
 
   const isCollapsed = ref(settingsStore.isCollapsed)
 
   const handleCollapseChange = (newValue: boolean) => {
     settingsStore.setCollapsed(newValue)
-    sider.value?.toggleCollapse()
+    sideBarRef.value?.toggleCollapse()
   }
 
   watch(
@@ -34,7 +34,7 @@
 
 <template>
   <Layout class="min-h-screen">
-    <Sider ref="sider" collapsible :collapsed-width="78" v-model="isCollapsed">
+    <Sider ref="sideBarRef" collapsible :collapsed-width="78" v-model="isCollapsed">
       <Menu :active-name="activeMenuItem" theme="dark" width="auto" :class="menuitemClasses">
         <MenuItem name="dashboard" :to="{ name: 'dashboard' }">
           <Icon type="ios-navigate" />

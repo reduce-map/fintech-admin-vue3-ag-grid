@@ -38,7 +38,7 @@
     <Card class="m-0 p-0 flex">
       <Space>
         <Icon @click="collapsedSider" :class="[rotateIcon, 'inline-block']" type="md-menu" size="24" />
-        <h1>Dashboard ♟️ Example Page</h1>
+        <h1>♟️Dashboard Page</h1>
       </Space>
     </Card>
   </Header>

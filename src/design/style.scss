@@ -1,13 +1,9 @@
-// Global imports
-@import 'view-ui-plus/dist/styles/viewuiplus.css';
-
+// tailwind
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-// End Global imports
-
-// App global styles
+// app global styles
 :root {
   background-color: #242424;
   color-scheme: light dark;
@@ -25,11 +21,27 @@ body {
   min-height: 100vh;
 }
 
-// view-ui-plus overrides
-.ivu-layout-header {
-  height: auto;
+h1 {
+  @apply text-7xl leading-[4.5rem] font-semibold text-neutral-950;
 }
 
-// End App global styles
+h2 {
+  @apply text-6xl leading-[3.5rem] font-semibold text-neutral-950;
+}
 
+h3 {
+  @apply text-5xl leading-[3rem] font-semibold text-neutral-950;
+}
+
+h4 {
+  @apply text-4xl leading-[2.5rem] font-semibold text-neutral-950;
+}
+
+h5 {
+  @apply text-3xl leading-[2.25rem] font-semibold text-neutral-950;
+}
+
+h6 {
+  @apply text-2xl leading-[2.25rem] font-semibold text-neutral-950;
+}
 
