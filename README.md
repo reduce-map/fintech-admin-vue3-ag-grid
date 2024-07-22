@@ -4,7 +4,10 @@ A toolkit for building enterprise-level financial apps with Vue 3, AG Grid, AG C
 
 > A Vue 3 admin template with Vite, AG Grid, AG Charts, Pinia, Vue Router, Vue i18n, and ➕ View UI Plus
 
-**Live demo:** http://panjiachen.github.io/vue-admin-template
+Dev note:
+- Great examples
+  - http://panjiachen.github.io/vue-admin-template
+-
 
 ## Build Setup
 
