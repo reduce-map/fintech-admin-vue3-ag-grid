@@ -2,9 +2,7 @@
   import { useI18n } from 'vue-i18n'
   import { computed, ref, watch } from 'vue'
   import { useSettingsStore } from '@/store/settings.ts'
-  import BaseService from '@/services/base-service.ts'
-
-  console.log(BaseService, '123')
+  import {Space} from "view-ui-plus";
 
   const settingsStore = useSettingsStore()
 
@@ -36,19 +34,23 @@
 </script>
 
 <template>
-  <Header :style="{ padding: 0 }" class="bg-amber-300">
-    <Icon @click="collapsedSider" :class="rotateIcon" :style="{ margin: '0 20px' }" type="md-menu" size="24" />
+  <Header class="bg-amber-300 p-0 m-0">
+    <Card class="m-0 p-0 flex">
+      <Space>
+        <Icon @click="collapsedSider" :class="[rotateIcon, 'inline-block']" type="md-menu" size="24" />
+        <h1>Dashboard ♟️ Example Page</h1>
+      </Space>
+    </Card>
   </Header>
-  {{ settingsStore.isCollapsed }}
-  <Header :style="{ background: '#fff', boxShadow: '0 2px 3px 2px rgba(0,0,0,.1)' }">
-    <Breadcrumb :style="{ margin: '16px 0' }">
-      <BreadcrumbItem>Home</BreadcrumbItem>
-      <BreadcrumbItem>Components</BreadcrumbItem>
-      <BreadcrumbItem>Layout</BreadcrumbItem>
-    </Breadcrumb>
-  </Header>
+  <Breadcrumb class="p-4">
+    <BreadcrumbItem>Home</BreadcrumbItem>
+    <BreadcrumbItem>Components</BreadcrumbItem>
+    <BreadcrumbItem>Layout</BreadcrumbItem>
+  </Breadcrumb>
+
+
   <Card>
-    <h1 class="text-gray-100 bg-amber-300">Dashboard ♟️ Example Page</h1>
+
     <Icon type="logo-bitcoin" />
     <Space>
       <p>Internationalization / i18n locale:</p>
