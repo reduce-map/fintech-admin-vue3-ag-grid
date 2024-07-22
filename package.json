@@ -1,0 +1,58 @@
+{
+  "name": "finance-vue3-admin-template",
+  "version": "0.1.0",
+  "type": "module",
+  "author": "reducemap Nikita <https://github.com/reducemap>",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview",
+    "type-check": "vue-tsc -b",
+    "precommit": "npm run lint && npm run type-check",
+    "lint": "npm run lint:eslint && npm run lint:prettier",
+    "lint:eslint": "eslint --fix \"./**/*.{vue,ts,tsx}\"",
+    "lint:prettier": "prettier --write .",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "countries-list": "^3.1.0",
+    "pinia": "^2.1.7",
+    "view-ui-plus": "^1.3.18",
+    "vue": "^3.4.31",
+    "vue-i18n": "^9.13.1",
+    "vue-router": "^4.4.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@eslint/eslintrc": "3.1.0",
+    "@eslint/js": "9.5.0",
+    "@typescript-eslint/eslint-plugin": "7.13.1",
+    "@typescript-eslint/parser": "7.13.1",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "autoprefixer": "^10.4.19",
+    "cross-env": "^7.0.3",
+    "cssnano": "^7.0.4",
+    "eslint": "9.5.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-prettier": "5.1.3",
+    "eslint-plugin-vue": "9.26.0",
+    "globals": "15.6.0",
+    "husky": "^9.1.1",
+    "postcss": "^8.4.39",
+    "prettier": "^3.3.3",
+    "sass": "^1.77.8",
+    "sass-loader": "^14.2.1",
+    "tailwindcss": "^3.4.6",
+    "typescript": "^5.2.2",
+    "vite": "^5.3.4",
+    "vue-eslint-parser": "^9.4.3",
+    "vue-tsc": "^2.0.24"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=9"
+  }
+}
