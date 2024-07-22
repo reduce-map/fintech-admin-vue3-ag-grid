@@ -2,6 +2,9 @@
   import { useI18n } from 'vue-i18n'
   import { computed, ref, watch } from 'vue'
   import { useSettingsStore } from '@/store/settings.ts'
+  import BaseService from '@/services/base-service.ts'
+
+  console.log(BaseService, '123')
 
   const settingsStore = useSettingsStore()
 

@@ -1,4 +1,3 @@
-import './cryptocurrencies.ts'
 import { countries, getEmojiFlag, TCountryCode, ICountry } from 'countries-list'
 
 // Dictionary mapping currencies to flags for prioritized countries
