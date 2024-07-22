@@ -11,7 +11,7 @@ const router = createRouter({
   routes: [
     {
       path: "/",
-      component: () => import("./pages/Dashboard.vue"),
+      component: () => import("./pages/DashboardPage.vue"),
       name: "dashboard",
     },
     // {

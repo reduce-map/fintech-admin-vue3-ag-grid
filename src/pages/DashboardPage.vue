@@ -16,7 +16,7 @@ const handleLanguageChange = (value: string) => {
 </script>
 
 <template>
-  <h1>Dashboard ♟️ Example Page</h1>
+  <h1 class="text-gray-100 bg-amber-300">Dashboard ♟️ Example Page</h1>
   <Icon type="logo-bitcoin" />
   <Space>
     <p>Internationalization / i18n locale:</p>
