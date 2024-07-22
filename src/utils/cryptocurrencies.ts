@@ -1,21 +1,18 @@
-import axios from "axios";
+import axios from 'axios'
 
 export const getCryptocurrencies = async () => {
   try {
-    const response = await axios.get(
-      "https://api.coingecko.com/api/v3/coins/markets",
-      {
-        params: {
-          vs_currency: "usd",
-          order: "market_cap_desc",
-          per_page: 100,
-          page: 1,
-          sparkline: false,
-        },
+    const response = await axios.get('https://api.coingecko.com/api/v3/coins/markets', {
+      params: {
+        vs_currency: 'usd',
+        order: 'market_cap_desc',
+        per_page: 100,
+        page: 1,
+        sparkline: false,
       },
-    );
+    })
 
-    return response.data;
+    return response.data
     // return response.data.map((coin) => ({
     //   id: coin.id,
     //   symbol: coin.symbol,
@@ -43,11 +40,11 @@ export const getCryptocurrencies = async () => {
     //   last_updated: coin.last_updated,
     // }));
   } catch (error) {
-    console.error("Error fetching cryptocurrency data:", error);
-    return [];
+    console.error('Error fetching cryptocurrency data:', error)
+    return []
   }
-};
+}
 
 getCryptocurrencies().then((cryptocurrencies) => {
-  console.log("Cryptocurrencies:", cryptocurrencies);
-});
+  console.log('Cryptocurrencies:', cryptocurrencies)
+})
