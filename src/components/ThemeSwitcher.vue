@@ -10,10 +10,6 @@ const currentTheme = computed({
     settingsStore.setTheme(value)
   },
 })
-
-// const changeTheme = () => {
-//   settingsStore.toggleTheme();
-// };
 </script>
 
 <template>
