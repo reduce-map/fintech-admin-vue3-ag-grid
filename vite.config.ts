@@ -1,13 +1,15 @@
 import { defineConfig, loadEnv } from 'vite'
 import type { UserConfigExport, ConfigEnv } from 'vite'
-import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
-import * as path from "node:path";
-import autoprefixer from 'autoprefixer'
+import vue from '@vitejs/plugin-vue'
+import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vitejs.dev/config/
 const baseConfig: UserConfigExport = {
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    vueDevTools(),
+  ],
   resolve: {
     alias: [
       {
@@ -19,7 +21,7 @@ const baseConfig: UserConfigExport = {
   css: {
     preprocessorOptions: {
       less: {
-        javascriptEnabled: true, // Включите поддержку встроенного JavaScript
+        javascriptEnabled: true,
       },
     },
   },
@@ -43,7 +45,7 @@ export default (configEnv: ConfigEnv) => {
     filteredData.forEach(item => {
       console.log(`    key: ${item.key}, value: ${item.value}`);
     });
-  }, 0);
+  }, 10);
 
   return defineConfig({ ...baseConfig })
 }
