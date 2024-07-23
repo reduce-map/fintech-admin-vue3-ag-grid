@@ -1,5 +1,5 @@
 <template>
-  <div class="form-container overflow-hidden min-h-screen">
+  <div class="overflow-hidden min-h-screen">
     <Form ref="formRef" :model="formItem" :label-width="180" :rules="rules" class="flex p-3 flex-wrap gap-3">
       <Card class="w-full">
         <h3 class="mb-3">{{ $t('interfaceSettings') }}</h3>
@@ -24,66 +24,6 @@
               <Input v-model="formItem.nickName" :placeholder="$t('yourNickName')" />
             </FormItem>
 
-            <FormItem :label="$t('inputNumberMinMax')" prop="profitValue">
-              <InputNumber
-                v-model="formItem.profitValue"
-                controls-outside
-                :min="1000"
-                :max="50000"
-                :step="2000"
-                size="small"
-              />
-            </FormItem>
-
-            <FormItem :label="$t('radioGroupButtonType')">
-              <RadioGroup v-model="formItem.performanceMetrics" type="button">
-                <Radio v-for="option in statisticsOptions" :key="option.label" :label="option.label">
-                  {{ option.label }}
-                </Radio>
-              </RadioGroup>
-            </FormItem>
-
-            <FormItem :label="$t('sliderCustom')">
-              <Slider v-model="backTestPercentageRange" :marks="backTestPercentageMarks" :step="5" show-stops range />
-            </FormItem>
-          </Card>
-        </Col>
-        <Col :xs="24" :xl="12">
-          <Card>
-            <h3 class="mb-3">{{ $t('indeterminateCheckboxGroup') }}</h3>
-
-            <FormItem :label="$t('password')">
-              <Input type="password" password :placeholder="$t('password')" />
-            </FormItem>
-
-            <FormItem :label="$t('timeAndPickerValidation')" prop="statisticsCollectionTime">
-              <TimePicker v-model="formItem.statisticsCollectionTime" type="time" :placeholder="$t('selectTime')" />
-            </FormItem>
-
-            <FormItem :label="$t('selectCustom')">
-              <Select v-model="selectedInstruments" multiple clearable style="width: 260px">
-                <OptionGroup v-for="group in instrumentsGrouped" :key="group.source" :label="group.source">
-                  <Option v-for="item in group.instruments" :key="item.symbol" :value="item.symbol">
-                    <span>{{ item.label }}</span>
-                    <Trend :flag="item.trend" class="float-right mr-2">{{ item.change }}%</Trend>
-                  </Option>
-                </OptionGroup>
-              </Select>
-            </FormItem>
-
-            <FormItem :label="$t('datePicker')">
-              <DatePicker
-                type="daterange"
-                split-panels
-                show-week-numbers
-                :start-date="new Date(2025, 0, 1)"
-                :options="datePickerOptions"
-                placement="bottom-end"
-                placeholder="Select date"
-                style="width: 200px"
-              />
-            </FormItem>
-
             <FormItem :label="$t('inputCustom')">
               <Input>
                 <template #prepend>
@@ -100,6 +40,68 @@
                   </Select>
                 </template>
               </Input>
+            </FormItem>
+
+            <FormItem :label="$t('selectCustom')">
+              <Select v-model="selectedInstruments" multiple clearable style="width: 260px">
+                <OptionGroup v-for="group in instrumentsGrouped" :key="group.source" :label="group.source">
+                  <Option v-for="item in group.instruments" :key="item.symbol" :value="item.symbol">
+                    <span>{{ item.label }}</span>
+                    <Trend :flag="item.trend" class="float-right mr-2">{{ item.change }}%</Trend>
+                  </Option>
+                </OptionGroup>
+              </Select>
+            </FormItem>
+
+            <FormItem :label="$t('inputNumberMinMax')" prop="profitValue">
+              <InputNumber
+                v-model="formItem.profitValue"
+                controls-outside
+                :min="1000"
+                :max="50000"
+                :step="2000"
+                size="small"
+              />
+            </FormItem>
+
+            <FormItem :label="$t('sliderCustom')">
+              <div class="px-5">
+                <Slider v-model="backTestPercentageRange" :marks="backTestPercentageMarks" :step="5" show-stops range />
+              </div>
+            </FormItem>
+          </Card>
+        </Col>
+        <Col :xs="24" :xl="12">
+          <Card>
+            <h3 class="mb-3">{{ $t('indeterminateCheckboxGroup') }}</h3>
+
+            <FormItem :label="$t('password')">
+              <Input type="password" password :placeholder="$t('password')" />
+            </FormItem>
+
+            <FormItem :label="$t('timeAndPickerValidation')" prop="statisticsCollectionTime">
+              <TimePicker v-model="formItem.statisticsCollectionTime" type="time" :placeholder="$t('selectTime')" />
+            </FormItem>
+
+            <FormItem :label="$t('datePicker')">
+              <DatePicker
+                type="daterange"
+                split-panels
+                show-week-numbers
+                :start-date="new Date(2025, 0, 1)"
+                :options="datePickerOptions"
+                placement="bottom-end"
+                placeholder="Select date"
+                style="width: 200px"
+              />
+            </FormItem>
+
+            <FormItem :label="$t('radioGroupButtonType')">
+              <RadioGroup v-model="formItem.performanceMetrics" type="button">
+                <Radio v-for="option in statisticsOptions" :key="option.label" :label="option.label">
+                  {{ option.label }}
+                </Radio>
+              </RadioGroup>
             </FormItem>
 
             <FormItem :label="$t('checkBoxCustom')">
