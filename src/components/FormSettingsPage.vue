@@ -3,7 +3,7 @@
     <Form ref="formRef" :model="formItem" :label-width="180" :rules="rules" class="flex p-3 flex-wrap gap-3">
       <Card class="w-full">
         <h3 class="mb-3">{{ $t('interfaceSettings') }}</h3>
-        <Space split>
+        <Space split wrap>
           <FormItem class="mb-0" :label="$t('themeSwitcher')" :label-width="140">
             <ThemeSwitcher />
           </FormItem>
@@ -12,7 +12,7 @@
             <LanguageSwitcher />
           </FormItem>
 
-          <Button size="lg" type="dashed" icon="logo-octocat" @click="handleSubmit">{{ $t('save') }}</Button>
+          <Button type="dashed" icon="logo-octocat" @click="handleSubmit">{{ $t('save') }}</Button>
         </Space>
       </Card>
       <Row :gutter="16">
@@ -25,7 +25,7 @@
             </FormItem>
 
             <FormItem :label="$t('inputCustom')">
-              <Input>
+              <Input v-model="formItem.customInput">
                 <template #prepend>
                   <Select v-model="formItem.urlProtocol" style="width: 80px">
                     <Option value="http">http://</Option>
@@ -43,7 +43,7 @@
             </FormItem>
 
             <FormItem :label="$t('selectCustom')">
-              <Select v-model="selectedInstruments" multiple clearable style="width: 260px">
+              <Select v-model="formItem.selectedInstruments" multiple clearable style="width: 260px">
                 <OptionGroup v-for="group in instrumentsGrouped" :key="group.source" :label="group.source">
                   <Option v-for="item in group.instruments" :key="item.symbol" :value="item.symbol">
                     <span>{{ item.label }}</span>
@@ -66,7 +66,13 @@
 
             <FormItem :label="$t('sliderCustom')">
               <div class="px-5">
-                <Slider v-model="backTestPercentageRange" :marks="backTestPercentageMarks" :step="5" show-stops range />
+                <Slider
+                  v-model="formItem.backTestPercentageRange"
+                  :marks="backTestPercentageMarks"
+                  :step="5"
+                  show-stops
+                  range
+                />
               </div>
             </FormItem>
           </Card>
@@ -76,15 +82,16 @@
             <h3 class="mb-3">{{ $t('indeterminateCheckboxGroup') }}</h3>
 
             <FormItem :label="$t('password')">
-              <Input type="password" password :placeholder="$t('password')" />
+              <Input v-model="formItem.password" type="password" password :placeholder="$t('password')" />
             </FormItem>
 
             <FormItem :label="$t('timeAndPickerValidation')" prop="statisticsCollectionTime">
-              <TimePicker v-model="formItem.statisticsCollectionTime" type="time" :placeholder="$t('selectTime')" />
+              <TimePicker v-model="formItem.timePicker" type="time" :placeholder="$t('selectTime')" />
             </FormItem>
 
             <FormItem :label="$t('datePicker')">
               <DatePicker
+                v-model="formItem.datePicker"
                 type="daterange"
                 split-panels
                 show-week-numbers
@@ -97,7 +104,7 @@
             </FormItem>
 
             <FormItem :label="$t('radioGroupButtonType')">
-              <RadioGroup v-model="formItem.performanceMetrics" type="button">
+              <RadioGroup v-model="formItem.radioGroupButton" type="button">
                 <Radio v-for="option in statisticsOptions" :key="option.label" :label="option.label">
                   {{ option.label }}
                 </Radio>
@@ -136,14 +143,17 @@ const formRef = ref()
 
 // Form data. Assuming backend
 const formItem = ref({
-  autoIncrementOrder: false,
-  desiredProfitPercentage: 10,
-  profitValue: 10000,
-  statisticsCollectionTime: '02:01:02',
+  nickName: 'reduceMap | Nikita',
   urlProtocol: 'http',
   domainOption: 'com',
-  performanceMetrics: null,
-  nickName: 'reduceMap | Nikita',
+  customInput: 'customInput value',
+  profitValue: 10000,
+  timePicker: '02:01:02',
+  datePicker: ['2025-02-02T23:00:00.000Z', '2025-02-18T23:00:00.000Z'],
+  radioGroupButton: 'Expected Payoff max',
+  password: 'hello-perfect-world',
+  selectedInstruments: ['EURUSD'],
+  backTestPercentageRange: [25, 75],
 })
 
 export interface FinancialInstrument {
@@ -154,6 +164,7 @@ export interface FinancialInstrument {
   change: number
 }
 
+// Symbols list
 const instruments = ref<FinancialInstrument[]>([
   {
     symbol: 'EURUSD',
@@ -217,8 +228,6 @@ const statisticsOptions = ref([
   { label: 'Complex Criterion max' },
 ])
 
-const selectedInstruments = ref<string[]>([])
-
 const instrumentsGrouped = computed(() => {
   const groupedMap = instruments.value.reduce(
     (acc, instrument) => {
@@ -275,7 +284,7 @@ const datePickerOptions = ref({
 // https://github.com/yiminghe/async-validator
 const rules = ref({
   nickName: [{ required: true, message: t('enterNickName'), trigger: 'blur' }],
-  statisticsCollectionTime: [
+  timePicker: [
     {
       required: true,
       message: 'enter statistics collection time',
@@ -288,9 +297,11 @@ const rules = ref({
 const handleSubmit = () => {
   formRef.value.validate((valid: boolean) => {
     if (valid) {
-      Message.info('Data ready to be send: ' + JSON.stringify(formItem.value))
+      const formResult = { ...formItem.value, ...checkAllGroup.value }
+      Message.info(`Data ready to be send: ${JSON.stringify(formResult, null, 4)} also you can find it in the console`)
+      console.log('Form data:', formResult)
     } else {
-      console.error('Validation failed')
+      Message.error(`Validation failed`)
     }
   })
 }
@@ -330,7 +341,6 @@ const checkAllGroupChange = (data: string[]) => {
 }
 
 // slider setup
-const backTestPercentageRange = ref<[number, number]>([25, 75])
 
 const backTestPercentageMarks = {
   0: '0%',

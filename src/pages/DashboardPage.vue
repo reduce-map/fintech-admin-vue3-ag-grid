@@ -8,15 +8,13 @@ import AppHeader from '@/components/AppHeader.vue'
     <h1>Dashboard Page</h1>
   </AppHeader>
 
-  <DescriptionList title="List:" :col="4">
-    <Description term="Settings Page：">
-      <router-link :to="{ name: 'settings' }"> Link </router-link>
-    </Description>
-    <Description term="Lisa："> 12 </Description>
-    <Description term="Newton："> 321 </Description><Description term="Macintosh："> 12 </Description>
-    <Description term="Lisa："> 12 </Description>
-    <Description term="Newton："> 321 </Description><Description term="Macintosh："> 12 </Description>
-    <Description term="Lisa："> 12 </Description>
-    <Description term="Newton："> 321 </Description>
-  </DescriptionList>
+  <Row>
+    <Col>
+      <DescriptionList title="List:" :col="3">
+        <Description term="Settings Page：">
+          <router-link :to="{ name: 'settings' }"> Link </router-link>
+        </Description>
+      </DescriptionList>
+    </Col>
+  </Row>
 </template>
