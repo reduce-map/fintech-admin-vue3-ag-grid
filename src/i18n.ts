@@ -48,6 +48,6 @@ export interface I18nMessages {
   datePicker: string
   selectCustom: string
   timeAndPickerValidation: string
-  sliderCustom: string
   radioGroupButtonType: string
+  inputNumberMinMax: string
 }
