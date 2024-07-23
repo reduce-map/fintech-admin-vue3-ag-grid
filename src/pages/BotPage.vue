@@ -8,7 +8,7 @@ import BotHeader from '@/components/BotHeader.vue'
 import BotAgGrid from '@/components/BotAgGrid.vue'
 import type { CurrencyPair } from '@/components/BotAgGrid.vue'
 
-const value = ref('basic'); // set if you want to open the panel by default
+const value = ref('basic') // set if you want to open the panel by default
 // const value = ref('')
 const columns = ref([
   {
