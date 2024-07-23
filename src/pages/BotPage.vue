@@ -1,16 +1,15 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-import SplitLayout from '../layouts/SplitLayout.vue'
+import SplitLayout from '@/layouts/SplitLayout.vue'
+import BotBasicSettings from '@/components/BotBasicSettings.vue'
+import BotLog from '@/components/BotLog.vue'
+import BotHeader from '@/components/BotHeader.vue'
+import BotAgGrid from '@/components/BotAgGrid.vue'
+import type { CurrencyPair } from '@/components/BotAgGrid.vue'
 
-import DashboardBasicSettings from '@/components/DashboardBasicSettings.vue'
-import DashboardLog from '@/components/DashboardLog.vue'
-import Header2 from '@/components/BotHeader.vue'
-import DashboardAgGrid from '@/components/DashboardAgGrid.vue'
-import type { CurrencyPair } from '@/components/DashboardAgGrid.vue'
-
-// const value = ref('basic'); // set if you want to open the panel by default
-const value = ref('')
+const value = ref('basic'); // set if you want to open the panel by default
+// const value = ref('')
 const columns = ref([
   {
     title: 'Variable',
@@ -163,15 +162,15 @@ const AgGridData = ref<CurrencyPair[]>([
 </script>
 
 <template>
-  <Header2 />
-  <SplitLayout class="min-h-screen">
+  <BotHeader />
+  <SplitLayout>
     <template #beforeMain>
       <Collapse v-model="value" accordion>
         <Panel name="basic">
           <Icon type="ios-settings" size="18" />
           <strong>Basic Settings</strong>
           <template #content>
-            <DashboardBasicSettings />
+            <BotBasicSettings />
           </template>
         </Panel>
       </Collapse>
@@ -181,15 +180,10 @@ const AgGridData = ref<CurrencyPair[]>([
       <Table :columns="columns" :data="data" stripe size="small" :border="true" />
     </template>
     <template #topright>
-      <DashboardLog />
+      <BotLog />
     </template>
     <template #main>
-      <DashboardAgGrid :initial-data="AgGridData" export-file-name="bot-currency-pairs" />
+      <BotAgGrid :initial-data="AgGridData" export-file-name="bot-currency-pairs" />
     </template>
   </SplitLayout>
 </template>
-
-<style lang="scss" scoped>
-.split-layout-bot {
-}
-</style>

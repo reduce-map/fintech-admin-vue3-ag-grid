@@ -14,7 +14,7 @@
       <DescriptionList layout="vertical" :col="4">
         <Description :term="isBotEnabled ? 'Big boss:' : 'Small boss:'">Boss</Description>
         <Description term="Department:">Trading</Description>
-        <Description term="Purpose:">Steam Bot</Description>
+        <Description term="Purpose:">FTMO Bot</Description>
         <Description term="Deadline:">
           <strong>
             <CountDown v-font="16" :target="deadlineCountDown" @on-end="handleEnd" />
@@ -42,7 +42,7 @@
     </template>
     <template #extra>
       <Space split wrap>
-        <div class="items-center align-circle">
+        <div class="flex items-center align-circle">
           <Circle v-if="isBotEnabled" :percent="100" :size="30" :stroke-width="8" stroke-color="#5cb85c">
             <Icon type="ios-checkmark" size="30" style="color: #5cb85c" />
           </Circle>
@@ -86,7 +86,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { Message } from 'view-ui-plus'
-import DashboardBasicSettings from './DashboardBasicSettings.vue'
+import DashboardBasicSettings from './BotBasicSettings.vue'
 
 const isDrawerOpened = ref(false)
 const isBotEnabled = ref(true)

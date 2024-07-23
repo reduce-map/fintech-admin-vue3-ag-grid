@@ -13,15 +13,6 @@
       </Tooltip>
     </FormItem>
 
-    <FormItem label="Steam Proxy">
-      <Tooltip content="Select the Steam proxy to use" placement="top">
-        <Select v-model="formItem.steamProxy">
-          <Option value="proxy1">Steam socks Proxy (Free)</Option>
-          <Option value="proxy2">Steam socks Proxy (Paid)</Option>
-        </Select>
-      </Tooltip>
-    </FormItem>
-
     <FormItem label="Update Orders">
       <Tooltip content="Specify the time to update orders">
         <DatePicker v-model="formItem.updateOrdersTime" placeholder="Select date" style="width: 200px" />
@@ -108,7 +99,6 @@ import { Message } from 'view-ui-plus'
 const formRef = ref()
 const formItem = ref({
   startOnOpen: true,
-  steamProxy: 'proxy2',
   updateOrdersTime: '',
   searchSalesValue: 4,
   searchSalesTime: '00:02:00',
@@ -123,7 +113,6 @@ const formItem = ref({
 })
 
 const rules = ref({
-  steamProxy: [{ required: true, message: 'Please select a Steam Proxy', trigger: 'blur' }],
   searchSalesValue: [
     {
       required: true,

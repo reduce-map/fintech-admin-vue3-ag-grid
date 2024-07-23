@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import AppHeader from '@/components/AppHeader.vue'
-import FormSettings from '@/components/FormSettingsPage.vue'
+import SettingsForm from '@/components/SettingsForm.vue'
 </script>
 
 <template>
@@ -16,5 +16,5 @@ import FormSettings from '@/components/FormSettingsPage.vue'
     </template>
   </AppHeader>
 
-  <FormSettings />
+  <SettingsForm />
 </template>

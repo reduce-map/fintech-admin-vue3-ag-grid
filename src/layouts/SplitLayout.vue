@@ -16,6 +16,9 @@ const localHorizontalSplit = ref(props.horizontalSplit)
 </script>
 
 <template>
+  <slot name="beforeMain">
+    <!--    BeforeMain slot-->
+  </slot>
   <div class="layout-container">
     <Split v-model="localVerticalSplit" mode="vertical">
       <template #top>
@@ -46,7 +49,7 @@ const localHorizontalSplit = ref(props.horizontalSplit)
 <style lang="scss" scoped>
 // tailwind for MVP
 .layout-container {
-  height: calc(100vh - var(--header-height) - 150px);
+  min-height: calc(100vh - 200px);
   border: 1px solid #dcdee2;
 }
 
