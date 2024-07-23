@@ -45,10 +45,10 @@ watch(isCollapsed, handleCollapseChange)
           <Icon type="ios-navigate" />
           <span>Dashboard</span>
         </MenuItem>
-        <!--        <MenuItem name="settings" :to="{ name: 'settings' }">-->
-        <!--          <Icon type="ios-settings" />-->
-        <!--          <span>Settings</span>-->
-        <!--        </MenuItem>-->
+        <MenuItem name="reports" :to="{ name: 'reports' }">
+          <Icon type="ios-settings" />
+          <span>Reports</span>
+        </MenuItem>
 
         <!--        <Submenu name="AG Grid">-->
         <!--          <template #title>-->
@@ -109,7 +109,4 @@ watch(isCollapsed, handleCollapseChange)
   vertical-align: middle;
   font-size: 22px;
 }
-//.dev-run-preview .dev-run-preview-edit {
-//  display: none;
-//}
 </style>
