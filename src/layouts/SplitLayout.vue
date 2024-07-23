@@ -1,18 +1,18 @@
 <script setup lang="ts">
-  import { ref } from 'vue'
+import { ref } from 'vue'
 
-  export interface Props {
-    verticalSplit?: number
-    horizontalSplit?: number
-  }
+export interface Props {
+  verticalSplit?: number
+  horizontalSplit?: number
+}
 
-  const props = withDefaults(defineProps<Props>(), {
-    verticalSplit: 0.3,
-    horizontalSplit: 0.4,
-  })
+const props = withDefaults(defineProps<Props>(), {
+  verticalSplit: 0.3,
+  horizontalSplit: 0.4,
+})
 
-  const localVerticalSplit = ref(props.verticalSplit)
-  const localHorizontalSplit = ref(props.horizontalSplit)
+const localVerticalSplit = ref(props.verticalSplit)
+const localHorizontalSplit = ref(props.horizontalSplit)
 </script>
 
 <template>
@@ -44,21 +44,21 @@
 </template>
 
 <style lang="scss" scoped>
-  // tailwind for MVP
-  .layout-container {
-    height: calc(100vh - var(--header-height) - 150px);
-    border: 1px solid #dcdee2;
-  }
+// tailwind for MVP
+.layout-container {
+  height: calc(100vh - var(--header-height) - 150px);
+  border: 1px solid #dcdee2;
+}
 
-  .layout-pane {
-    padding: 10px;
-    max-width: 100%;
-    max-height: 100%;
-    overflow-x: hidden;
-  }
+.layout-pane {
+  padding: 10px;
+  max-width: 100%;
+  max-height: 100%;
+  overflow-x: hidden;
+}
 
-  .layout-pane.no-padding {
-    height: 100%;
-    padding: 0;
-  }
+.layout-pane.no-padding {
+  height: 100%;
+  padding: 0;
+}
 </style>
