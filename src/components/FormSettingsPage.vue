@@ -1,135 +1,122 @@
 <template>
-  <Row>
-    <Col :xs="2" :sm="4" :md="6" :lg="8">Col</Col>
-    <Col :xs="20" :sm="16" :md="12" :lg="8">Col</Col>
-    <Col :xs="2" :sm="4" :md="6" :lg="8">Col</Col>
-  </Row>
+  <div class="form-container overflow-hidden min-h-screen">
+    <Form :model="formItem" :label-width="180" :rules="rules" ref="formRef" class="flex p-3 flex-wrap gap-3">
+      <Card class="w-full">
+        <h3 class="mb-3">$t('interfaceSettings') Interface Settings</h3>
+        <Space split>
+          <FormItem class="mb-0" label="Theme Swithcer" :labelWidth="140">
+            <ThemeSwitcher />
+          </FormItem>
 
-  <Row justify="start" class="code-row-bg">
-    <Col span="4">col-4</Col>
-    <Col span="4">col-4</Col>
-    <Col span="4">col-4</Col>
-    <Col span="4">col-4</Col>
-  </Row>
-  <div class="form-container">
-    <Form :model="formItem" :label-width="200" :rules="rules" ref="formRef" class="flex p-3 flex-wrap gap-3">
-      <!-- Interface Settings Section -->
+          <FormItem class="mb-0" label="Language Swithcer" :labelWidth="140">
+            <LanguageSwitcher />
+          </FormItem>
 
-      <Card class="flex-1 flex-shrink flex-grow basis-[calc(100%-20px)]">
-        <h3 class="mb-3">Interface Settings</h3>
-
-
-
-        <FormItem label="Theme Swithcer">
-          <ThemeSwitcher />
-        </FormItem>
-
-        <FormItem label="Language Swithcer">
-          <LanguageSwitcher />
-        </FormItem>
-
-        <Divider />
-
-        <Button type="primary" @click="handleSubmit">{{ $t('save') }}</Button>
+          <Button size="lg" type="dashed" icon="logo-octocat" @click="handleSubmit">{{ $t('save') }}</Button>
+        </Space>
       </Card>
+      <Row :gutter="16">
+        <Col :xs="24" :xl="12">
+          <Card>
+            <h3 class="mb-3">Controls</h3>
 
-      <Card class="flex-1 flex-shrink flex-grow basis-[calc(50%-20px)] min-w-[300px] p-2.5 rounded-md">
-        <h3 class="mb-3">Controls</h3>
+            <FormItem :label="$t('enterNickName')" prop="nickName">
+              <Input v-model="formItem.nickName" placeholder="Your nick name" />
+            </FormItem>
 
-        <FormItem :label="'minimumProfitValue'" prop="minimumProfitValue">
-          <Input v-model="formItem.minimumProfitValue" placeholder="Minimum Profit Value" />
-        </FormItem>
+            <FormItem label="Input Number & Min, Max etc" prop="minimumProfitValue">
+              <InputNumber
+                v-model="formItem.minimumProfitValue"
+                controls-outside
+                :min="1000"
+                :max="50000"
+                :step="2000"
+                size="small"
+              />
+            </FormItem>
 
-        <FormItem label="Input Number & Min, Max etc">
-          <InputNumber
-            v-model="formItem.desiredProfitPercentage"
-            controls-outside
-            :min="5"
-            :max="99"
-            :step="0.1"
-            size="small"
-          />
-        </FormItem>
+            <FormItem label="Radio Group Button Type">
+              <RadioGroup v-model="formItem.performanceMetrics" type="button">
+                <Radio v-for="option in statisticsOptions" :label="option.label" :key="option.label">
+                  {{ option.label }}
+                </Radio>
+              </RadioGroup>
+            </FormItem>
 
-        <FormItem label="Time Picker & Validation" prop="statisticsCollectionTime">
-          <TimePicker v-model="formItem.statisticsCollectionTime" type="time" placeholder="Select time" />
-        </FormItem>
+            <FormItem label="Slider custom">
+              <Slider v-model="backTestPercentageRange" :marks="backTestPercentageMarks" :step="5" show-stops range />
+            </FormItem>
+          </Card>
+        </Col>
+        <Col :xs="24" :xl="12">
+          <Card>
+            <h3 class="mb-3">Indeterminate Checkbox Group</h3>
 
-        <FormItem label="Date Picker">
-          <DatePicker
-            type="daterange"
-            split-panels
-            show-week-numbers
-            :start-date="new Date(2025, 0, 1)"
-            :options="datePickerOptions"
-            placement="bottom-end"
-            placeholder="Select date"
-            style="width: 200px"
-          />
-        </FormItem>
-      </Card>
+            <FormItem label="Password">
+              <Input type="password" password placeholder="Password" />
+            </FormItem>
 
-      <Card class="flex-1 flex-shrink flex-grow basis-[calc(50%-20px)] min-w-[300px] p-2.5 rounded-md">
-        <h3 class="mb-3">Indeterminate Checkbox Group</h3>
+            <FormItem label="Time Picker & Validation" prop="statisticsCollectionTime">
+              <TimePicker v-model="formItem.statisticsCollectionTime" type="time" placeholder="Select time" />
+            </FormItem>
 
-        <FormItem label="Password">
-          <Input type="password" password placeholder="Password" />
-        </FormItem>
-
-        <FormItem label="Radio Group Button Type">
-          <RadioGroup v-model="formItem.performanceMetrics" type="button">
-            <Radio v-for="option in statisticsOptions" :label="option.label" :key="option.label">
-              {{ option.label }}
-            </Radio>
-          </RadioGroup>
-        </FormItem>
-
-        <FormItem label="Input custom">
-          <Input>
-            <template #prepend>
-              <Select v-model="formItem.urlProtocol" style="width: 80px">
-                <Option value="http">http://</Option>
-                <Option value="https">https://</Option>
+            <FormItem label="Select custom">
+              <Select v-model="selectedInstruments" multiple clearable style="width: 260px">
+                <OptionGroup v-for="group in instrumentsGrouped" :label="group.source" :key="group.source">
+                  <Option v-for="item in group.instruments" :value="item.symbol" :key="item.symbol">
+                    <span>{{ item.label }}</span>
+                    <Trend :flag="item.trend" class="float-right mr-2">{{ item.change }}%</Trend>
+                  </Option>
+                </OptionGroup>
               </Select>
-            </template>
-            <template #append>
-              <Select v-model="formItem.domainOption" style="width: 70px">
-                <Option value="com">.com</Option>
-                <Option value="org">.org</Option>
-                <Option value="io">.io</Option>
-              </Select>
-            </template>
-          </Input>
-        </FormItem>
+            </FormItem>
 
-        <FormItem label="Select custom">
-          <Select v-model="selectedInstruments" multiple clearable style="width: 260px">
-            <OptionGroup v-for="group in instrumentsGrouped" :label="group.source" :key="group.source">
-              <Option v-for="item in group.instruments" :value="item.symbol" :key="item.symbol">
-                <span>{{ item.label }}</span>
-                <Trend :flag="item.trend" class="float-right mr-2">{{ item.change }}%</Trend>
-              </Option>
-            </OptionGroup>
-          </Select>
-        </FormItem>
+            <FormItem label="Date Picker">
+              <DatePicker
+                type="daterange"
+                split-panels
+                show-week-numbers
+                :start-date="new Date(2025, 0, 1)"
+                :options="datePickerOptions"
+                placement="bottom-end"
+                placeholder="Select date"
+                style="width: 200px"
+              />
+            </FormItem>
 
-        <FormItem label="Checkbox custom">
-          <Space direction="horizontal" type="flex" split>
-            <Checkbox :indeterminate="indeterminate" :model-value="checkAll" @click.prevent="handleCheckAll">
-              Select All
-            </Checkbox>
-            <CheckboxGroup v-model="checkAllGroup" @on-change="checkAllGroupChange">
-              <Checkbox v-for="option in options" :label="option" :key="option">
-                {{ option }}
-              </Checkbox>
-            </CheckboxGroup>
-          </Space>
-        </FormItem>
+            <FormItem label="Input custom">
+              <Input>
+                <template #prepend>
+                  <Select v-model="formItem.urlProtocol" style="width: 80px">
+                    <Option value="http">http://</Option>
+                    <Option value="https">https://</Option>
+                  </Select>
+                </template>
+                <template #append>
+                  <Select v-model="formItem.domainOption" style="width: 70px">
+                    <Option value="com">.com</Option>
+                    <Option value="org">.org</Option>
+                    <Option value="io">.io</Option>
+                  </Select>
+                </template>
+              </Input>
+            </FormItem>
 
-        <FormItem label="Slider custom">
-          <Slider v-model="backtestPercentageRange" :marks="backtestPercentageMarks" :step="5" show-stops range />
-        </FormItem>
-      </Card>
+            <FormItem label="Checkbox custom">
+              <Space direction="horizontal" type="flex" split>
+                <Checkbox :indeterminate="indeterminate" :model-value="checkAll" @click.prevent="handleCheckAll">
+                  Select All
+                </Checkbox>
+                <CheckboxGroup v-model="checkAllGroup" @on-change="checkAllGroupChange">
+                  <Checkbox v-for="option in options" :label="option" :key="option">
+                    {{ option }}
+                  </Checkbox>
+                </CheckboxGroup>
+              </Space>
+            </FormItem>
+          </Card>
+        </Col>
+      </Row>
     </Form>
   </div>
 </template>
@@ -139,7 +126,7 @@
   import { useI18n } from 'vue-i18n'
   import LanguageSwitcher from '@/components/LanguageSwitcher.vue'
   import ThemeSwitcher from '@/components/ThemeSwitcher.vue'
-  import {Form, Message} from "view-ui-plus";
+  import { Form, Message, Space } from 'view-ui-plus'
 
   const { t } = useI18n()
 
@@ -149,11 +136,12 @@
   const formItem = ref({
     autoIncrementOrder: false,
     desiredProfitPercentage: 10,
-    minimumProfitValue: 'minimumProfitValue',
+    minimumProfitValue: 10000,
     statisticsCollectionTime: '02:01:02',
     urlProtocol: 'http',
     domainOption: 'com',
     performanceMetrics: null,
+    nickName: 'reduceMap | Nikita'
   })
 
   export interface FinancialInstrument {
@@ -241,6 +229,7 @@
   // validation rules
   const rules = ref({
     minimumProfitValue: [{ required: true, message: 'enter min prf value', trigger: 'blur' }],
+    nickName: [{ required: true, message: t('enterNickName'), trigger: 'blur' }],
     statisticsCollectionTime: [
       {
         required: true,
@@ -296,19 +285,19 @@
   }
 
   // slider setup
-  const backtestPercentageRange = ref<[number, number]>([25, 75]);
+  const backTestPercentageRange = ref<[number, number]>([25, 75])
 
-  const backtestPercentageMarks = {
+  const backTestPercentageMarks = {
     0: '0%',
     20: '20%',
     40: '40%',
     60: {
       style: {
-        color: '#ff0000'
+        color: '#ff0000',
       },
-      label: '60%'
+      label: '60%',
     },
     80: '80%',
-    100: '100%'
-  };
+    100: '100%',
+  }
 </script>

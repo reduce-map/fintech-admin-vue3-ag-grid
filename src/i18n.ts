@@ -31,4 +31,5 @@ export interface I18nMessages {
   dark: string
   light: string
   save: string
+  enterNickName: string
 }
