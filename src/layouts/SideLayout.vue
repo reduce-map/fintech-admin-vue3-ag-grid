@@ -2,6 +2,7 @@
   import { computed, Ref, ref, watch } from 'vue'
   import { useRoute } from 'vue-router'
   import { useSettingsStore } from '@/store/settings.ts'
+  import { Sider } from 'view-ui-plus'
 
   const settingsStore = useSettingsStore()
   const route = useRoute()
@@ -9,10 +10,7 @@
   const activeMenuItem = computed(() => route.name)
   const menuitemClasses = computed(() => ['menu-item', isCollapsed.value ? 'collapsed-menu' : ''])
 
-  interface ToggleableHTMLElement extends HTMLElement {
-    toggleCollapse: () => void
-  }
-  const sideBarRef: Ref<ToggleableHTMLElement | null> = ref(null)
+  const sideBarRef: Ref<typeof Sider | null> = ref(null)
 
   const isCollapsed = ref(settingsStore.isCollapsed)
 
@@ -35,11 +33,36 @@
 <template>
   <Layout class="min-h-screen">
     <Sider ref="sideBarRef" collapsible :collapsed-width="78" v-model="isCollapsed">
-      <Menu :active-name="activeMenuItem" theme="dark" width="auto" :class="menuitemClasses">
+      <Menu
+        :active-name="activeMenuItem"
+        :theme="settingsStore.theme"
+        width="auto"
+        :class="menuitemClasses"
+        :open-names="['AG Grid']"
+        accordion
+      >
         <MenuItem name="dashboard" :to="{ name: 'dashboard' }">
           <Icon type="ios-navigate" />
           <span>Dashboard</span>
         </MenuItem>
+        <!--        <MenuItem name="settings" :to="{ name: 'settings' }">-->
+        <!--          <Icon type="ios-settings" />-->
+        <!--          <span>Settings</span>-->
+        <!--        </MenuItem>-->
+
+        <!--        <Submenu name="AG Grid">-->
+        <!--          <template #title>-->
+        <!--            <Icon type="ios-paper" />-->
+        <!--            AG Grid-->
+        <!--          </template>-->
+        <!--          <MenuGroup title="AG Grid">-->
+        <!--            <MenuItem name="reports" :to="{ name: 'reports' }">-->
+        <!--              <Icon type="logo-buffer" />-->
+        <!--              <span>Reports</span>-->
+        <!--            </MenuItem>-->
+        <!--          </MenuGroup>-->
+        <!--        </Submenu>-->
+
         <MenuItem name="settings" :to="{ name: 'settings' }">
           <Icon type="ios-settings" />
           <span>Settings</span>
@@ -86,7 +109,7 @@
     vertical-align: middle;
     font-size: 22px;
   }
-  .dev-run-preview .dev-run-preview-edit {
-    display: none;
-  }
+  //.dev-run-preview .dev-run-preview-edit {
+  //  display: none;
+  //}
 </style>

@@ -1,8 +1,22 @@
 @import 'view-ui-plus/src/styles/index.less';
 
+@primary-color: #d56d6d;
+//@layout-body-background      : #000;
+@menu-dark-active-bg: #2a2a2a;
+@menu-dark-title: #000;
+@layout-sider-background: #000;
+
+@layout-header-height: auto;
+
 // view-ui-plus overrides
 .ivu-layout-header {
-  height: auto;
+  line-height: 1;
+
+  .ivu-card-body {
+    padding: 0;
+  }
 }
 
-@primary-color: #8c0776;
+.ivu-layout-sider {
+  overflow-x: hidden;
+}

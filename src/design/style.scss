@@ -5,14 +5,14 @@
 
 // app global styles
 :root {
-  background-color: #242424;
-  color-scheme: light dark;
+  //background-color: #242424;
+  //color-scheme: light dark;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    background-color: #fff;
-    color: #213547;
+    //background-color: #fff;
+    //color: #213547;
   }
 }
 
@@ -21,27 +21,19 @@ body {
   min-height: 100vh;
 }
 
-h1 {
-  @apply text-5xl leading-[4.5rem] font-semibold text-neutral-950;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply text-xl leading-tight font-bold text-neutral-950;
 }
 
 h2 {
-  @apply text-6xl leading-[3.5rem] font-semibold text-neutral-950;
+  @apply font-semibold;
 }
 
 h3 {
-  @apply text-5xl leading-[3rem] font-semibold text-neutral-950;
+  @apply font-semibold text-lg;
 }
-
-h4 {
-  @apply text-4xl leading-[2.5rem] font-semibold text-neutral-950;
-}
-
-h5 {
-  @apply text-3xl leading-[2.25rem] font-semibold text-neutral-950;
-}
-
-h6 {
-  @apply text-2xl leading-[2.25rem] font-semibold text-neutral-950;
-}
-
