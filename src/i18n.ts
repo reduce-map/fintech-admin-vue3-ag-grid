@@ -32,4 +32,22 @@ export interface I18nMessages {
   light: string
   save: string
   enterNickName: string
+  settings: string
+  dashboard: string
+  interfaceSettings: string
+  themeSwitcher: string
+  languageSwitcher: string
+  appSettings: string
+  yourNickName: string
+  indeterminateCheckboxGroup: string
+  password: string
+  selectTime: string
+  selectAll: string
+  checkBoxCustom: string
+  inputCustom: string
+  datePicker: string
+  selectCustom: string
+  timeAndPickerValidation: string
+  sliderCustom: string
+  radioGroupButtonType: string
 }

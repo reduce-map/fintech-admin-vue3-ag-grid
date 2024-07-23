@@ -1,16 +1,16 @@
 <script setup lang="ts">
-  import { ref } from 'vue'
-  import { useI18n } from 'vue-i18n'
+import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 
-  const { locale } = useI18n()
-  const languages = ref([
-    { label: 'English', value: 'en-US' },
-    { label: 'Українська', value: 'uk-UA' },
-  ])
+const { locale } = useI18n()
+const languages = ref([
+  { label: 'English', value: 'en-US' },
+  { label: 'Українська', value: 'uk-UA' },
+])
 
-  const handleLanguageChange = (value: string) => {
-    locale.value = value
-  }
+const handleLanguageChange = (value: string) => {
+  locale.value = value
+}
 </script>
 
 <template>

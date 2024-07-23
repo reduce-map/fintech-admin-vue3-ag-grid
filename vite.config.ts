@@ -30,7 +30,10 @@ const baseConfig: UserConfigExport = {
 export default (configEnv: ConfigEnv) => {
   // sample, can be removed
   setTimeout(() => {
-    const envVariables = { ...process.env, ...loadEnv(configEnv.mode, process.cwd()) }
+    const envVariables = {
+      ...process.env,
+      ...loadEnv(configEnv.mode, process.cwd()),
+    }
 
     const filteredData = Object.entries(envVariables)
       .filter(([key]) => /(NODE|VITE)/.test(key))

@@ -1,19 +1,19 @@
 <script setup lang="ts">
-  import { computed } from 'vue'
-  import { useSettingsStore } from '@/store/settings'
+import { computed } from 'vue'
+import { useSettingsStore } from '@/store/settings'
 
-  const settingsStore = useSettingsStore()
+const settingsStore = useSettingsStore()
 
-  const currentTheme = computed({
-    get: () => settingsStore.theme,
-    set: (value: 'dark' | 'light') => {
-      settingsStore.setTheme(value)
-    },
-  })
+const currentTheme = computed({
+  get: () => settingsStore.theme,
+  set: (value: 'dark' | 'light') => {
+    settingsStore.setTheme(value)
+  },
+})
 
-  // const changeTheme = () => {
-  //   settingsStore.toggleTheme();
-  // };
+// const changeTheme = () => {
+//   settingsStore.toggleTheme();
+// };
 </script>
 
 <template>
