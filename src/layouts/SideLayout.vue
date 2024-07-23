@@ -49,6 +49,10 @@ watch(isCollapsed, handleCollapseChange)
           <Icon type="ios-settings" />
           <span>Reports</span>
         </MenuItem>
+        <MenuItem name="bot" :to="{ name: 'bot', params: { id: 27 } }">
+          <Icon type="md-ionitron" />
+          <span>FTMO Bot 27 Special</span>
+        </MenuItem>
 
         <!--        <Submenu name="AG Grid">-->
         <!--          <template #title>-->
