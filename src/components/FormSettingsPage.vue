@@ -1,9 +1,24 @@
 <template>
+  <Row>
+    <Col :xs="2" :sm="4" :md="6" :lg="8">Col</Col>
+    <Col :xs="20" :sm="16" :md="12" :lg="8">Col</Col>
+    <Col :xs="2" :sm="4" :md="6" :lg="8">Col</Col>
+  </Row>
+
+  <Row justify="start" class="code-row-bg">
+    <Col span="4">col-4</Col>
+    <Col span="4">col-4</Col>
+    <Col span="4">col-4</Col>
+    <Col span="4">col-4</Col>
+  </Row>
   <div class="form-container">
-    <Form :model="formItem" :label-width="200" :rules="rules" ref="formRef">
+    <Form :model="formItem" :label-width="200" :rules="rules" ref="formRef" class="flex p-3 flex-wrap gap-3">
       <!-- Interface Settings Section -->
-      <Card class="section">
-        <h3>Interface Settings</h3>
+
+      <Card class="flex-1 flex-shrink flex-grow basis-[calc(100%-20px)]">
+        <h3 class="mb-3">Interface Settings</h3>
+
+
 
         <FormItem label="Theme Swithcer">
           <ThemeSwitcher />
@@ -12,10 +27,14 @@
         <FormItem label="Language Swithcer">
           <LanguageSwitcher />
         </FormItem>
+
+        <Divider />
+
+        <Button type="primary" @click="handleSubmit">{{ $t('save') }}</Button>
       </Card>
 
-      <Card class="section">
-        <h3>Controls</h3>
+      <Card class="flex-1 flex-shrink flex-grow basis-[calc(50%-20px)] min-w-[300px] p-2.5 rounded-md">
+        <h3 class="mb-3">Controls</h3>
 
         <FormItem :label="'minimumProfitValue'" prop="minimumProfitValue">
           <Input v-model="formItem.minimumProfitValue" placeholder="Minimum Profit Value" />
@@ -48,6 +67,10 @@
             style="width: 200px"
           />
         </FormItem>
+      </Card>
+
+      <Card class="flex-1 flex-shrink flex-grow basis-[calc(50%-20px)] min-w-[300px] p-2.5 rounded-md">
+        <h3 class="mb-3">Indeterminate Checkbox Group</h3>
 
         <FormItem label="Password">
           <Input type="password" password placeholder="Password" />
@@ -103,9 +126,9 @@
           </Space>
         </FormItem>
 
-        <Divider />
-
-        <Button type="primary" @click="handleSubmit">{{ $t('save') }}</Button>
+        <FormItem label="Slider custom">
+          <Slider v-model="backtestPercentageRange" :marks="backtestPercentageMarks" :step="5" show-stops range />
+        </FormItem>
       </Card>
     </Form>
   </div>
@@ -116,7 +139,7 @@
   import { useI18n } from 'vue-i18n'
   import LanguageSwitcher from '@/components/LanguageSwitcher.vue'
   import ThemeSwitcher from '@/components/ThemeSwitcher.vue'
-  import {Message} from "view-ui-plus";
+  import {Form, Message} from "view-ui-plus";
 
   const { t } = useI18n()
 
@@ -271,31 +294,21 @@
       checkAll.value = false
     }
   }
-  // end indeterminate checkbox group
+
+  // slider setup
+  const backtestPercentageRange = ref<[number, number]>([25, 75]);
+
+  const backtestPercentageMarks = {
+    0: '0%',
+    20: '20%',
+    40: '40%',
+    60: {
+      style: {
+        color: '#ff0000'
+      },
+      label: '60%'
+    },
+    80: '80%',
+    100: '100%'
+  };
 </script>
-
-<style lang="scss" scoped>
-  .form-container form {
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-
-  .section {
-    flex: 1 1 calc(50% - 20px); /* Adjust the width as necessary */
-    min-width: 300px;
-    padding: 10px;
-    border-radius: 8px;
-  }
-
-  .section h3 {
-    margin-bottom: 10px;
-  }
-
-  @media (max-width: 1440px) {
-    .section {
-      flex: 1 1 100%;
-    }
-  }
-</style>
