@@ -1,4 +1,5 @@
 import { countries, getEmojiFlag, TCountryCode, ICountry } from 'countries-list'
+import { RouteLocationNormalized } from 'vue-router'
 
 // Dictionary mapping currencies to flags for prioritized countries
 const prioritizedCountries: Record<string, string> = {
@@ -149,3 +150,27 @@ export function formatDateTime(date: Date = new Date(), includeTime: boolean = t
 //
 // const countriesWithMultipleCurrencies = getCountriesWithMultipleCurrencies();
 // console.log('Countries with Multiple Currencies:', countriesWithMultipleCurrencies); // Displays countries with more than one currency
+
+export function setBodyClass(route: RouteLocationNormalized) {
+  const prefix = 'app-page-'
+  const defaultClass = `${prefix}default`
+  const body = document.body
+
+  body.classList.forEach((className) => {
+    if (className.startsWith(prefix)) {
+      body.classList.remove(className)
+    }
+  })
+
+  switch (route.name) {
+    case 'home':
+      body.classList.add(`${prefix}home`)
+      break
+    case 'about':
+      body.classList.add(`${prefix}about`)
+      break
+    default:
+      body.classList.add(defaultClass)
+      break
+  }
+}
