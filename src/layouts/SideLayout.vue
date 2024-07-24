@@ -32,7 +32,14 @@ watch(isCollapsed, handleCollapseChange)
 
 <template>
   <Layout class="min-h-screen">
-    <Sider ref="sideBarRef" v-model="isCollapsed" hide-trigger collapsible :collapsed-width="78" >
+    <Sider
+      ref="sideBarRef"
+      v-model="isCollapsed"
+      hide-trigger
+      collapsible
+      :collapsed-width="78"
+      :class="{ 'dark-theme': settingsStore.theme === 'dark' }"
+    >
       <Menu
         :active-name="activeMenuItem"
         :theme="settingsStore.theme"
@@ -112,6 +119,15 @@ watch(isCollapsed, handleCollapseChange)
       transform 0.2s ease 0.2s;
     vertical-align: middle;
     font-size: 22px;
+  }
+}
+
+#app {
+  .ivu-layout-sider {
+    background: #fff;
+  }
+  .ivu-layout-sider.dark-theme {
+    background-color: #001529;
   }
 }
 </style>

@@ -25,7 +25,7 @@ import { AgGridVue } from 'ag-grid-vue3'
 import 'ag-grid-enterprise'
 import { ColDef, GridApi } from 'ag-grid-enterprise'
 import { Card, ButtonGroup, Button } from 'view-ui-plus'
-import {AgGridEvent} from "ag-grid-community";
+import { AgGridEvent } from 'ag-grid-community'
 
 // Define an interface for the trading data
 interface TradingData {
