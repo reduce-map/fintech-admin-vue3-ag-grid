@@ -7,8 +7,6 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
-    "predeploy": "pnpm build",
-    "deploy": "gh-pages -d dist",
     "preview": "vite preview",
     "type-check": "vue-tsc -b",
     "precommit": "pnpm run lint && pnpm run type-check",

@@ -184,6 +184,7 @@ const defaultColDef = ref<ColDef>({
   flex: 1,
   editable: true,
   sortable: true,
+  minWidth: 120,
   filter: true,
   enableRowGroup: true,
   enableValue: true,

@@ -69,7 +69,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <h3 class="mb-4">Log</h3>
+  <h3 class="py-2 pb-3 px-4">Log</h3>
   <div v-if="loading" class="flex justify-center">
     <Spin size="large" />
   </div>

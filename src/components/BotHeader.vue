@@ -6,8 +6,8 @@
     <template #action>
       <ButtonGroup>
         <Button @click="toggleStatus">{{ isBotEnabled ? 'Deactivate Bot' : 'Activate Bot' }}</Button>
-        <Button @click="isDrawerOpened = true">Open Bot Setting</Button>
-        <Button type="primary">Make Money</Button>
+        <Button type="primary" @click="isDrawerOpened = true">Open Bot Setting</Button>
+        <Button type="dashed">Make Money</Button>
       </ButtonGroup>
     </template>
     <template #content>
@@ -90,12 +90,12 @@ import DashboardBasicSettings from './BotBasicSettings.vue'
 
 const isDrawerOpened = ref(false)
 const isBotEnabled = ref(true)
-const deadlineCountDown = ref(new Date().getTime() + 11.111 * 1000) // assuming 11.111 seconds -> will get from BE. No Store needed.
+const deadlineCountDown = ref(new Date().getTime() + 11.111 * 1000) // 11.111 seconds : magic number for example
 const duration = ref(new Date().getTime() - 86400 * 854 * 1000)
 
 const toggleStatus = () => {
   isBotEnabled.value = !isBotEnabled.value
-  Message.info(`Bot status changed to ${isBotEnabled.value}`) // i18n and one place for all messages
+  Message.info(`Bot status changed to ${isBotEnabled.value}`)
 }
 
 // Handlers

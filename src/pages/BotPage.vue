@@ -176,7 +176,7 @@ const AgGridData = ref<CurrencyPair[]>([
       </Collapse>
     </template>
     <template #topleft>
-      <h3 class="mb-4">Trading Input Values</h3>
+      <h3 class="px-4 py-2">Trading Input Values</h3>
       <Table :columns="columns" :data="data" stripe size="small" :border="true" />
     </template>
     <template #topright>

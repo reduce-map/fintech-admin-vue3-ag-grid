@@ -1,5 +1,5 @@
 <template>
-  <div class="overflow-hidden min-h-screen">
+  <div class="">
     <Form ref="formRef" :model="formItem" :label-width="180" :rules="rules" class="flex p-3 flex-wrap gap-3">
       <Card class="w-full">
         <h3 class="mb-3">{{ $t('interfaceSettings') }}</h3>

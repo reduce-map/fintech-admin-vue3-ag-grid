@@ -10,7 +10,6 @@ const baseConfig: UserConfigExport = {
     vue(),
     // vueDevTools()
   ],
-  base: '/finance-vue3-admin-template/',
   resolve: {
     alias: [
       {

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="example-wrapper">
-      <Space split wrap class="mb-4">
+      <Space split wrap class="py-3 px-2">
         <ButtonGroup>
           <Button @click="gridApi?.selectAll()">Select All</Button>
           <Button @click="gridApi?.deselectAll()">Clear Selection</Button>
