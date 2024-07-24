@@ -16,10 +16,13 @@ const localHorizontalSplit = ref(props.horizontalSplit)
 </script>
 
 <template>
-  <div class="layout-container">
+  <slot name="beforeMain">
+    <!--    BeforeMain slot-->
+  </slot>
+  <div class="min-h-screen">
     <Split v-model="localVerticalSplit" mode="vertical">
       <template #top>
-        <div class="layout-pane no-padding">
+        <div class="max-w-full max-h-full overflow-x-hidden h-full">
           <Split v-model="localHorizontalSplit" mode="horizontal">
             <template #left>
               <div class="layout-pane">
@@ -27,7 +30,7 @@ const localHorizontalSplit = ref(props.horizontalSplit)
               </div>
             </template>
             <template #right>
-              <div class="layout-pane">
+              <div class="max-w-full max-h-full overflow-x-hidden px-2 h-full">
                 <slot name="topright">Top Right Pane slot</slot>
               </div>
             </template>
@@ -35,7 +38,7 @@ const localHorizontalSplit = ref(props.horizontalSplit)
         </div>
       </template>
       <template #bottom>
-        <div class="layout-pane layout-pane-bottom">
+        <div class="max-w-full max-h-full overflow-x-hidden p-0 h-full">
           <slot name="main">Main Pane slot</slot>
         </div>
       </template>
@@ -43,22 +46,22 @@ const localHorizontalSplit = ref(props.horizontalSplit)
   </div>
 </template>
 
-<style lang="scss" scoped>
-// tailwind for MVP
-.layout-container {
-  height: calc(100vh - var(--header-height) - 150px);
-  border: 1px solid #dcdee2;
-}
+<!--<style lang="scss" scoped>-->
+<!--// tailwind for MVP-->
+<!--.layout-container {-->
+<!--  min-height: calc(100vh - 200px);-->
+<!--  border: 1px solid #dcdee2;-->
+<!--}-->
 
-.layout-pane {
-  padding: 10px;
-  max-width: 100%;
-  max-height: 100%;
-  overflow-x: hidden;
-}
+<!--.layout-pane {-->
+<!--  padding: 10px;-->
+<!--  max-width: 100%;-->
+<!--  max-height: 100%;-->
+<!--  overflow-x: hidden;-->
+<!--}-->
 
-.layout-pane.no-padding {
-  height: 100%;
-  padding: 0;
-}
-</style>
+<!--.layout-pane.no-padding {-->
+<!--  height: 100%;-->
+<!--  padding: 0;-->
+<!--}-->
+<!--</style>-->

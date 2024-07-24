@@ -69,8 +69,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <h3 class="mb-4">Log</h3>
-  <div v-if="loading" class="content-center">
+  <h3 class="py-2 pb-3 px-4">Log</h3>
+  <div v-if="loading" class="flex justify-center">
     <Spin size="large" />
   </div>
   <div v-else>
@@ -82,7 +82,7 @@ onMounted(() => {
           <p v-line-clamp="2" class="content">{{ message.text }}</p>
         </TimelineItem>
       </Timeline>
-      <div class="content-center">
+      <div class="flex justify-center">
         <Spin v-if="loadingMore" size="large" />
         <Button v-else type="dashed" @click="fetchMoreChatMessages">Load more</Button>
       </div>

@@ -8,7 +8,7 @@ export interface AppSettings {
 
 export const useSettingsStore = defineStore('navigation', {
   state: (): AppSettings => ({
-    isCollapsed: false,
+    isCollapsed: true,
     theme: 'dark',
     // language: "en"
   }),

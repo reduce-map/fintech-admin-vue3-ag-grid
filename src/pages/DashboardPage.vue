@@ -1,5 +1,16 @@
 <script setup lang="ts">
 import AppHeader from '@/components/AppHeader.vue'
+import { useAuthStore } from '@/store/auth'
+import { ref } from 'vue'
+
+import ExampleTreemap from '@/components/ExampleTreemap.vue'
+import ExampleTreemap2 from '@/components/ExampleTreemap2.vue'
+import DashboardApplicationChart from '@/components/DashboardApplicationChart.vue'
+import DashboardFinancialChart from '@/components/DashboardFinancialChart.vue'
+
+const authStore = useAuthStore()
+
+const columns = ref(2)
 </script>
 
 <template>
@@ -8,13 +19,31 @@ import AppHeader from '@/components/AppHeader.vue'
     <h1>Dashboard Page</h1>
   </AppHeader>
 
-  <Row>
-    <Col>
-      <DescriptionList title="List:" :col="3">
-        <Description term="Settings Page：">
-          <router-link :to="{ name: 'settings' }"> Link </router-link>
-        </Description>
-      </DescriptionList>
-    </Col>
-  </Row>
+  <div class="px-3">
+    <Carousel :height="200" autoplay loop>
+      <CarouselItem class="">
+        <div class="flex justify-center items-center h-full">
+          <h2>authStore.loggedIn : {{ authStore.loggedIn }}</h2>
+        </div>
+      </CarouselItem>
+      <CarouselItem>
+        <div class="flex justify-center items-center h-full">
+          <h2>authStore.role : {{ authStore.role }}</h2>
+        </div>
+      </CarouselItem>
+    </Carousel>
+
+    <DashboardFinancialChart />
+
+    <Grid class="mb-4" :col="columns" border hover>
+      <GridItem>
+        <ExampleTreemap />
+      </GridItem>
+      <GridItem>
+        <ExampleTreemap2 />
+      </GridItem>
+    </Grid>
+
+    <DashboardApplicationChart class="mb-4" />
+  </div>
 </template>

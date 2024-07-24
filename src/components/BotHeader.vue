@@ -6,15 +6,15 @@
     <template #action>
       <ButtonGroup>
         <Button @click="toggleStatus">{{ isBotEnabled ? 'Deactivate Bot' : 'Activate Bot' }}</Button>
-        <Button @click="isDrawerOpened = true">Open Bot Setting</Button>
-        <Button type="primary">Make Money</Button>
+        <Button type="primary" @click="isDrawerOpened = true">Open Bot Setting</Button>
+        <Button type="dashed">Make Money</Button>
       </ButtonGroup>
     </template>
     <template #content>
       <DescriptionList layout="vertical" :col="4">
         <Description :term="isBotEnabled ? 'Big boss:' : 'Small boss:'">Boss</Description>
         <Description term="Department:">Trading</Description>
-        <Description term="Purpose:">Steam Bot</Description>
+        <Description term="Purpose:">FTMO Bot</Description>
         <Description term="Deadline:">
           <strong>
             <CountDown v-font="16" :target="deadlineCountDown" @on-end="handleEnd" />
@@ -42,7 +42,7 @@
     </template>
     <template #extra>
       <Space split wrap>
-        <div class="items-center align-circle">
+        <div class="flex items-center align-circle">
           <Circle v-if="isBotEnabled" :percent="100" :size="30" :stroke-width="8" stroke-color="#5cb85c">
             <Icon type="ios-checkmark" size="30" style="color: #5cb85c" />
           </Circle>
@@ -86,16 +86,16 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { Message } from 'view-ui-plus'
-import DashboardBasicSettings from './DashboardBasicSettings.vue'
+import DashboardBasicSettings from './BotBasicSettings.vue'
 
 const isDrawerOpened = ref(false)
 const isBotEnabled = ref(true)
-const deadlineCountDown = ref(new Date().getTime() + 11.111 * 1000) // assuming 11.111 seconds -> will get from BE. No Store needed.
+const deadlineCountDown = ref(new Date().getTime() + 11.111 * 1000) // 11.111 seconds : magic number for example
 const duration = ref(new Date().getTime() - 86400 * 854 * 1000)
 
 const toggleStatus = () => {
   isBotEnabled.value = !isBotEnabled.value
-  Message.info(`Bot status changed to ${isBotEnabled.value}`) // i18n and one place for all messages
+  Message.info(`Bot status changed to ${isBotEnabled.value}`)
 }
 
 // Handlers

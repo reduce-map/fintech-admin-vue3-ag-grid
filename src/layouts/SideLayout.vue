@@ -32,7 +32,14 @@ watch(isCollapsed, handleCollapseChange)
 
 <template>
   <Layout class="min-h-screen">
-    <Sider ref="sideBarRef" v-model="isCollapsed" collapsible :collapsed-width="78">
+    <Sider
+      ref="sideBarRef"
+      v-model="isCollapsed"
+      hide-trigger
+      collapsible
+      :collapsed-width="78"
+      :class="{ 'dark-theme': settingsStore.theme === 'dark' }"
+    >
       <Menu
         :active-name="activeMenuItem"
         :theme="settingsStore.theme"
@@ -80,37 +87,47 @@ watch(isCollapsed, handleCollapseChange)
 </template>
 
 <style lang="scss" scoped>
-.layout-con {
-  height: 100%;
-  width: 100%;
+.menu-item {
+  span {
+    display: inline-block;
+    overflow: hidden;
+    width: calc(100% - 30px);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: bottom;
+    transition: width 0.2s ease 0.2s;
+  }
+  i {
+    transform: translateX(0px);
+    transition:
+      font-size 0.2s ease,
+      transform 0.2s ease;
+    vertical-align: middle;
+    font-size: 16px;
+  }
 }
-.menu-item span {
-  display: inline-block;
-  overflow: hidden;
-  width: calc(100% - 30px);
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  vertical-align: bottom;
-  transition: width 0.2s ease 0.2s;
+.collapsed-menu {
+  span {
+    width: 0;
+    transition: width 0.2s ease;
+  }
+
+  i {
+    transform: translateX(5px);
+    transition:
+      font-size 0.2s ease 0.2s,
+      transform 0.2s ease 0.2s;
+    vertical-align: middle;
+    font-size: 22px;
+  }
 }
-.menu-item i {
-  transform: translateX(0px);
-  transition:
-    font-size 0.2s ease,
-    transform 0.2s ease;
-  vertical-align: middle;
-  font-size: 16px;
-}
-.collapsed-menu span {
-  width: 0;
-  transition: width 0.2s ease;
-}
-.collapsed-menu i {
-  transform: translateX(5px);
-  transition:
-    font-size 0.2s ease 0.2s,
-    transform 0.2s ease 0.2s;
-  vertical-align: middle;
-  font-size: 22px;
+
+#app {
+  .ivu-layout-sider {
+    background: #fff;
+  }
+  .ivu-layout-sider.dark-theme {
+    background-color: #001529;
+  }
 }
 </style>
