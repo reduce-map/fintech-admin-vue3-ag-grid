@@ -1,11 +1,14 @@
 import { createRouter, createWebHistory, RouteLocationNormalizedGeneric, RouteRecordRaw } from 'vue-router'
 import ViewUIPlus from 'view-ui-plus'
+import { useAuthStore } from '@/store/auth.ts'
 
 const routes: RouteRecordRaw[] = [
+  // private routes
   {
     path: '/',
     component: () => import('@/layouts/SideLayout.vue'),
     redirect: () => ({ name: 'dashboard' }),
+    meta: { requiresAuth: true },
     children: [
       {
         path: 'dashboard',
@@ -29,6 +32,22 @@ const routes: RouteRecordRaw[] = [
       },
     ],
   },
+  // public routes
+  {
+    path: '/login',
+    name: 'login',
+    beforeEnter: (to, from, next) => {
+      const authStore = useAuthStore()
+      if (!authStore.loggedIn) {
+        next()
+      } else {
+        next({ path: from.fullPath, replace: true })
+      }
+      console.log(to, from)
+      next()
+    },
+    component: () => import('@/pages/LoginPage.vue'),
+  },
 ]
 
 const router = createRouter({
@@ -36,8 +55,19 @@ const router = createRouter({
   routes: routes,
 })
 
-router.beforeEach((_: RouteLocationNormalizedGeneric, __: RouteLocationNormalizedGeneric, next) => {
+router.beforeEach((to: RouteLocationNormalizedGeneric, __: RouteLocationNormalizedGeneric, next) => {
+  const authStore = useAuthStore()
   ViewUIPlus.LoadingBar.start()
+
+  if (to.meta.requiresAuth) {
+    // see more https://router.vuejs.org/guide/advanced/meta.html
+    // see more https://router.vuejs.org/guide/advanced/navigation-guards.html
+
+    if (!authStore.loggedIn) {
+      next({ name: 'login', query: { redirect: to.fullPath } })
+    }
+  }
+
   next()
 })
 

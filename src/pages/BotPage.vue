@@ -7,6 +7,7 @@ import BotLog from '@/components/BotLog.vue'
 import BotHeader from '@/components/BotHeader.vue'
 import BotAgGrid from '@/components/BotAgGrid.vue'
 import type { CurrencyPair } from '@/components/BotAgGrid.vue'
+import AppHeader from '@/components/AppHeader.vue'
 
 const value = ref('basic') // set if you want to open the panel by default
 // const value = ref('')
@@ -162,6 +163,10 @@ const AgGridData = ref<CurrencyPair[]>([
 </script>
 
 <template>
+  <AppHeader>
+    <span class="text-2xl align-middle">♛</span>
+    <h1>Bot Page</h1>
+  </AppHeader>
   <BotHeader />
   <SplitLayout>
     <template #beforeMain>

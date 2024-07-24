@@ -16,6 +16,9 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "ag-charts-community": "^10.0.2",
+    "ag-charts-enterprise": "^10.0.2",
+    "ag-charts-vue3": "^10.0.2",
     "ag-grid-community": "^32.0.2",
     "ag-grid-enterprise": "^32.0.2",
     "ag-grid-vue3": "^32.0.2",

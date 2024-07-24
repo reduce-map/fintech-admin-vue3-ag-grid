@@ -1,33 +1,36 @@
 import { defineStore } from 'pinia'
+
 import AuthService from '@/services/auth-service.ts'
 
 export interface User {
   token: string
   role: string
-  email: string
-}
-
-export interface UserInfo {
-  companyName: string
+  username: string
 }
 
 export interface AuthState {
   currentUser: User | null
-  userInfo: UserInfo | null
   authError: string | null
+  wasLoggedIn: boolean
+}
+
+const getMockUser = (username: string = 'reduce-map', password: string = 'hello-world') => {
+  return {
+    token: `your-${password}-token`,
+    role: 'admin',
+    username: username,
+  }
 }
 
 export const useAuthStore = defineStore('auth', {
   state: (): AuthState => ({
     currentUser: JSON.parse(localStorage.getItem('auth.currentUser') as string) || null,
-    userInfo: null,
     authError: null,
+    wasLoggedIn: false,
   }),
   getters: {
     loggedIn: (state): boolean => !!state.currentUser?.token,
     role: (state): string | undefined => state.currentUser?.role,
-    email: (state): string | undefined => state.currentUser?.email,
-    companyName: (state): string | undefined => state.userInfo?.companyName,
   },
   actions: {
     async login(email: string, password: string) {
@@ -42,25 +45,14 @@ export const useAuthStore = defineStore('auth', {
       this.currentUser = user
       localStorage.setItem('auth.currentUser', JSON.stringify(user))
     },
-    async getUserInfo() {
-      // const userInfo = await AuthService.getUserInfo();
-      // this.userInfo = userInfo;
-    },
-    async validate() {
-      if (!this.loggedIn) return null
-
-      try {
-        // const { data } = await AuthService.validate();
-        // this.setCurrentUser(data);
-        // return data;
-      } catch (error) {
-        // this.setCurrentUser(null);
-        throw error
-      }
-    },
-    signOut() {
+    logOut() {
       this.currentUser = null
       localStorage.removeItem('auth.currentUser')
+    },
+    setMockUser() {
+      const mockUser = getMockUser()
+      this.currentUser = mockUser
+      localStorage.setItem('auth.currentUser', JSON.stringify(mockUser))
     },
   },
 })
