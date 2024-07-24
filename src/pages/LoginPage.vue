@@ -1,6 +1,7 @@
 <template>
-  <div class="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-400 to-purple-500">
-    <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+  <div class="min-h-screen flex items-center justify-center login-wrapper">
+    <SplineExample class="fixed left-0 top-0" />
+    <Card class="min-w-80">
       <Login @on-submit="handleSubmit">
         <UserName name="username" :value="userName" :rules="nameRules" placeholder="Any valid username is fine" />
         <Password name="password" :value="password" :rules="passwordRule" placeholder="Any valid password is fine" />
@@ -9,7 +10,7 @@
         </div>
         <Submit>Login</Submit>
       </Login>
-    </div>
+    </Card>
   </div>
 </template>
 
@@ -17,6 +18,8 @@
 import { ref } from 'vue'
 import { useAuthStore } from '@/store/auth.ts'
 import { useRouter } from 'vue-router'
+// @ts-expect-error SPLINE EXAMPLE no types
+import SplineExample from '@/components/SplineExample.vue'
 
 const authStore = useAuthStore()
 const router = useRouter()
@@ -43,3 +46,9 @@ const nameRules = [
   { min: 3, message: 'The username length cannot be less than 3 bits', trigger: 'change' },
 ]
 </script>
+
+<style lang="scss" scoped>
+.login-wrapper {
+  background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
+}
+</style>
