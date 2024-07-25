@@ -20,7 +20,7 @@ import { useAuthStore } from '@/store/auth.ts'
 import { useRouter } from 'vue-router'
 // @ts-expect-error SPLINE EXAMPLE no types
 import SplineExample from '@/components/SplineExample.vue'
-import {Message} from "view-ui-plus";
+import { Message } from 'view-ui-plus'
 
 const authStore = useAuthStore()
 const router = useRouter()

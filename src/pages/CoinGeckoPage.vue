@@ -1,42 +1,42 @@
 <script setup lang="ts">
-import coinGeckoService from '../services/coin-gecko-service';
-import type { Cryptocurrency } from '../services/coin-gecko-service';
-import { onMounted, ref } from 'vue';
+import coinGeckoService from '../services/coin-gecko-service'
+import type { Cryptocurrency } from '../services/coin-gecko-service'
+import { onMounted, ref } from 'vue'
 
-import { AgGridVue } from 'ag-grid-vue3';
-import { GridApi, ColDef } from 'ag-grid-enterprise';
-import 'ag-grid-enterprise';
-import { Message } from "view-ui-plus";
-import { getSavedResponseCoinGecko } from "@/utils/coingecko-sample-response.ts";
-import AppHeader from "@/components/AppHeader.vue";
-import {AgGridEvent} from "ag-grid-community";
-import ImageCellRenderer from "@/components/AgGridImageCellRenderer.vue";
+import { AgGridVue } from 'ag-grid-vue3'
+import { GridApi, ColDef } from 'ag-grid-enterprise'
+import 'ag-grid-enterprise'
+import { Message } from 'view-ui-plus'
+import { getSavedResponseCoinGecko } from '@/utils/coingecko-sample-response.ts'
+import AppHeader from '@/components/AppHeader.vue'
+import { AgGridEvent } from 'ag-grid-community'
+import ImageCellRenderer from '@/components/AgGridImageCellRenderer.vue'
 
 function numberFormatter(params: { value: number }) {
-  return params?.value?.toLocaleString();
+  return params?.value?.toLocaleString()
 }
 
 const fetchCryptocurrencies = async () => {
   try {
-    rowData.value = await coinGeckoService.getCryptocurrencies();
+    rowData.value = await coinGeckoService.getCryptocurrencies()
   } catch (error) {
-    Message.error('Error fetching cryptocurrencies ', error);
-    rowData.value = getSavedResponseCoinGecko();
+    Message.error('Error fetching cryptocurrencies ', error)
+    rowData.value = getSavedResponseCoinGecko()
   }
-};
+}
 
 onMounted(() => {
-  fetchCryptocurrencies();
-});
+  fetchCryptocurrencies()
+})
 
-const rowData = ref<Cryptocurrency[]>([]);
-const gridApi = ref<GridApi | null>(null);
+const rowData = ref<Cryptocurrency[]>([])
+const gridApi = ref<GridApi | null>(null)
 
 const columnDefs = ref<ColDef[]>([
   {
     field: 'name',
     headerName: 'Name',
-    rowDrag: true
+    rowDrag: true,
   },
   {
     field: 'symbol',
@@ -92,7 +92,7 @@ const columnDefs = ref<ColDef[]>([
     field: 'max_supply',
     headerName: 'Max Supply',
   },
-]);
+])
 
 const defaultColDef = ref<ColDef>({
   flex: 1,
@@ -100,12 +100,12 @@ const defaultColDef = ref<ColDef>({
   filter: true,
   enableRowGroup: true,
   minWidth: 100,
-});
+})
 
 const onGridReady = (params: AgGridEvent) => {
-  gridApi.value = params.api;
-  params.api.sizeColumnsToFit();
-};
+  gridApi.value = params.api
+  params.api.sizeColumnsToFit()
+}
 </script>
 
 <template>
@@ -114,17 +114,17 @@ const onGridReady = (params: AgGridEvent) => {
     <h1>Coin Gecko Sample</h1>
   </AppHeader>
 
-    <ag-grid-vue
-      style="height: calc(100vh - 100px)"
-      class="ag-theme-balham"
-      :columnDefs="columnDefs"
-      :rowData="rowData"
-      :defaultColDef="defaultColDef"
-      :animateRows="true"
-      :rowDragManaged="true"
-      :enableRangeSelection="true"
-      :suppressRowClickSelection="true"
-      rowSelection="multiple"
-      @grid-ready="onGridReady"
-    />
+  <ag-grid-vue
+    style="height: calc(100vh - 100px)"
+    class="ag-theme-balham"
+    :column-defs="columnDefs"
+    :row-data="rowData"
+    :default-col-def="defaultColDef"
+    :animate-rows="true"
+    :row-drag-managed="true"
+    :enable-range-selection="true"
+    :suppress-row-click-selection="true"
+    row-selection="multiple"
+    @grid-ready="onGridReady"
+  />
 </template>

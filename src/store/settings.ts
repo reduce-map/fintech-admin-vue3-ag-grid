@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-type theme = 'dark' | 'light';
+type theme = 'dark' | 'light'
 
 export interface AppSettings {
   isCollapsed: boolean

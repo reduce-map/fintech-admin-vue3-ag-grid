@@ -5,7 +5,7 @@
 <script lang="ts" setup>
 defineProps<{
   params: {
-    value: string;
-  };
-}>();
+    value: string
+  }
+}>()
 </script>
