@@ -1,4 +1,4 @@
-import { I18nMessages } from '../i18n.ts'
+import { type I18nMessages } from '../i18n.ts'
 
 const en: I18nMessages = {
   dark: 'Dark',
