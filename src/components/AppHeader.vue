@@ -21,7 +21,7 @@ watch(
   }
 )
 
-const rotateIcon = computed(() => ['menu-icon', isCollapsed.value ? 'rotate-icon' : ''])
+const rotateIcon = computed(() => [isCollapsed.value ? 'rotate-90' : ''])
 
 const previewList = ref([
   'https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExOTZvaDdzdXRsNnlpY2pyOWR2djR5MjZ1dXg3NjE1azBnOXVsMzUxeCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/6KYPwNChIl8DRZL2TJ/giphy.webp',
@@ -40,7 +40,7 @@ const onLogOutClick = async () => {
         <Col span="12">
           <Space split>
             <Icon
-              :class="[rotateIcon, 'inline-block align-middle cursor-pointer']"
+              :class="[rotateIcon, 'transform transition duration-500 inline-block align-middle cursor-pointer']"
               type="md-menu"
               size="18  "
               @click="collapsedSider"
@@ -63,21 +63,16 @@ const onLogOutClick = async () => {
             <Icon type="ios-arrow-down" size="18" />
             <template #list>
               <DropdownMenu>
-                <DropdownItem>Home</DropdownItem>
-                <DropdownItem>Github</DropdownItem>
-                <!--                <Dropdown placement="right-start">-->
-                <!--                  123123-->
-                <!--                  <DropdownItem>-->
-                <!--                    <Icon type="ios-arrow-back" />-->
-                <!--                    More-->
-                <!--                  </DropdownItem>-->
-                <!--                  <template #list>-->
-                <!--                    <DropdownMenu>-->
-                <!--                      <DropdownItem>DocS</DropdownItem>-->
-                <!--                    </DropdownMenu>-->
-                <!--                  </template>-->
-                <!--                </Dropdown>-->
-                <DropdownItem @click="onLogOutClick"> Log Out </DropdownItem>
+                <DropdownItem>
+                  <a href="https://github.com/reduce-map/fintech-admin-vue3" target="_blank">
+                    Github
+                    <Icon type="logo-github" />
+                  </a>
+                </DropdownItem>
+                <DropdownItem @click="onLogOutClick">
+                  Log Out
+                  <Icon type="ios-log-out" />
+                </DropdownItem>
               </DropdownMenu>
             </template>
           </Dropdown>
@@ -88,13 +83,3 @@ const onLogOutClick = async () => {
 
   <slot name="breadcrumb" />
 </template>
-
-<style scoped>
-.menu-icon {
-  transition: transform 0.3s ease;
-}
-
-.rotate-icon {
-  transform: rotate(-90deg);
-}
-</style>

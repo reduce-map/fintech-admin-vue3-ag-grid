@@ -1,18 +1,17 @@
 import { defineStore } from 'pinia'
 
+type theme = 'dark' | 'light'
+
 export interface AppSettings {
   isCollapsed: boolean
-  theme: 'dark' | 'light'
-  // language: "en" | "ua"
+  theme: theme
 }
 
 export const useSettingsStore = defineStore('navigation', {
   state: (): AppSettings => ({
     isCollapsed: true,
     theme: 'dark',
-    // language: "en"
   }),
-  getters: {},
   actions: {
     toggleCollapsed() {
       this.isCollapsed = !this.isCollapsed
@@ -20,10 +19,7 @@ export const useSettingsStore = defineStore('navigation', {
     setCollapsed(value: boolean) {
       this.isCollapsed = value
     },
-    toggleTheme() {
-      this.theme = this.theme === 'dark' ? 'light' : 'dark'
-    },
-    setTheme(value: 'dark' | 'light') {
+    setTheme(value: theme) {
       this.theme = value
     },
   },

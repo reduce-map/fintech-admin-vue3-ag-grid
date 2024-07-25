@@ -52,28 +52,18 @@ watch(isCollapsed, handleCollapseChange)
           <Icon type="ios-navigate" />
           <span>Dashboard</span>
         </MenuItem>
-        <MenuItem name="reports" :to="{ name: 'reports' }">
-          <Icon type="ios-settings" />
-          <span>Reports</span>
-        </MenuItem>
         <MenuItem name="bot" :to="{ name: 'bot', params: { id: 27 } }">
-          <Icon type="md-ionitron" />
+          <Icon type="logo-bitcoin" />
           <span>FTMO Bot 27 Special</span>
         </MenuItem>
-
-        <!--        <Submenu name="AG Grid">-->
-        <!--          <template #title>-->
-        <!--            <Icon type="ios-paper" />-->
-        <!--            AG Grid-->
-        <!--          </template>-->
-        <!--          <MenuGroup title="AG Grid">-->
-        <!--            <MenuItem name="reports" :to="{ name: 'reports' }">-->
-        <!--              <Icon type="logo-buffer" />-->
-        <!--              <span>Reports</span>-->
-        <!--            </MenuItem>-->
-        <!--          </MenuGroup>-->
-        <!--        </Submenu>-->
-
+        <MenuItem name="coin-gecko" :to="{ name: 'coin-gecko' }">
+          <Icon type="md-ionitron" />
+          <span>Coingecko</span>
+        </MenuItem>
+        <MenuItem name="reports" :to="{ name: 'reports' }">
+          <Icon type="ios-list-box" />
+          <span>Reports</span>
+        </MenuItem>
         <MenuItem name="settings" :to="{ name: 'settings' }">
           <Icon type="ios-settings" />
           <span>Settings</span>

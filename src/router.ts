@@ -30,21 +30,24 @@ const routes: RouteRecordRaw[] = [
         name: 'bot',
         component: () => import('./pages/BotPage.vue'),
       },
+      {
+        path: `/coin-gecko`,
+        name: 'coin-gecko',
+        component: () => import('./pages/CoinGeckoPage.vue'),
+      },
     ],
   },
   // public routes
   {
     path: '/login',
     name: 'login',
-    beforeEnter: (to, from, next) => {
+    beforeEnter: (_, from, next) => {
       const authStore = useAuthStore()
       if (!authStore.loggedIn) {
         next()
       } else {
         next({ path: from.fullPath, replace: true })
       }
-      console.log(to, from)
-      next()
     },
     component: () => import('@/pages/LoginPage.vue'),
   },
