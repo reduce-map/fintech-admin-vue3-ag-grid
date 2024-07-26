@@ -129,28 +129,6 @@ export function formatDateTime(date: Date = new Date(), includeTime: boolean = t
   return `${year}-${month}-${day}`
 }
 
-// // Example usage of date formatting utilities
-// console.log(formatDateTime()); // Outputs current date and time in YYYY-MM-DD HH:MM format
-// console.log(formatDateTime(new Date(), false)); // Outputs current date only in YYYY-MM-DD format
-// console.log(formatDateTime(new Date('2024-06-13T08:02:00Z'), true)); // Specific date with time
-// console.log(formatDateTime(new Date('2024-06-13T08:02:00Z'), false)); // Specific date without time
-//
-// // Testing currency-related functions
-// const allCurrencies = getAllCurrencies();
-// console.log('All Currencies:', allCurrencies); // Displays all unique currencies
-//
-// const usdFlag = getFlagByCurrency('USD');
-// console.log('Flag for USD:', usdFlag); // Displays the flag emoji for USD
-//
-// const allCurrenciesWithFlags = getAllCurrenciesWithFlags();
-// console.log('Currencies with Flags:', allCurrenciesWithFlags); // Displays currencies with their flags
-//
-// const allFlags = getAllFlags();
-// console.log('All Flags:', allFlags); // Displays all available flags
-//
-// const countriesWithMultipleCurrencies = getCountriesWithMultipleCurrencies();
-// console.log('Countries with Multiple Currencies:', countriesWithMultipleCurrencies); // Displays countries with more than one currency
-
 export function setBodyClass(route: RouteLocationNormalizedGeneric) {
   const prefix = 'app-page-'
   const defaultClass = `${prefix}default`

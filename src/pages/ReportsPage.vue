@@ -56,7 +56,6 @@ import {
   GridApi,
   ICellRendererParams,
   AgGridEvent,
-  RowValueChangedEvent,
   CellValueChangedEvent,
 } from 'ag-grid-community'
 import 'ag-grid-enterprise'
@@ -278,9 +277,7 @@ const onCellValueChanged = (event: CellValueChangedEvent) => {
   isChanged.value = true
 }
 
-const onRowValueChanged = (event: RowValueChangedEvent) => {
-  const data = event.data
-  console.log('onRowValueChanged: (' + data.date + ', ' + data.trader + ', ' + data.amount + ', ' + data.price + ')')
+const onRowValueChanged = () => {
   isChanged.value = true
 }
 
