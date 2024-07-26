@@ -20,7 +20,7 @@ const columns = ref(2)
   </AppHeader>
 
   <div class="px-3">
-    <Carousel :height="200" autoplay loop>
+    <Carousel :height="100" autoplay loop :autoplay-speed="2000">
       <CarouselItem class="">
         <div class="flex justify-center items-center h-full">
           <h2>authStore.loggedIn : {{ authStore.loggedIn }}</h2>

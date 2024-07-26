@@ -1,5 +1,5 @@
 import { countries, getEmojiFlag, TCountryCode, ICountry } from 'countries-list'
-import { RouteLocationNormalized } from 'vue-router'
+import { RouteLocationNormalizedGeneric } from 'vue-router'
 
 // Dictionary mapping currencies to flags for prioritized countries
 const prioritizedCountries: Record<string, string> = {
@@ -151,7 +151,7 @@ export function formatDateTime(date: Date = new Date(), includeTime: boolean = t
 // const countriesWithMultipleCurrencies = getCountriesWithMultipleCurrencies();
 // console.log('Countries with Multiple Currencies:', countriesWithMultipleCurrencies); // Displays countries with more than one currency
 
-export function setBodyClass(route: RouteLocationNormalized) {
+export function setBodyClass(route: RouteLocationNormalizedGeneric) {
   const prefix = 'app-page-'
   const defaultClass = `${prefix}default`
   const body = document.body
@@ -163,11 +163,14 @@ export function setBodyClass(route: RouteLocationNormalized) {
   })
 
   switch (route.name) {
-    case 'home':
-      body.classList.add(`${prefix}home`)
+    case 'reports':
+    case 'coin-gecko':
+    case 'dashboard':
+    case 'bot':
+      body.classList.add(`${prefix}has-grid`)
       break
-    case 'about':
-      body.classList.add(`${prefix}about`)
+    case 'login':
+      body.classList.add(`${prefix}login`)
       break
     default:
       body.classList.add(defaultClass)

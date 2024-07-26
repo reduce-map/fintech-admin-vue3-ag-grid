@@ -21,8 +21,16 @@
 }
 
 body {
-  min-width: 1200px;
   min-height: 100vh;
+  min-width: 640px;
+
+  &.app-page-login {
+    min-width: 320px;
+  }
+
+  &.app-page-has-grid {
+    min-width: 1024px;
+  }
 }
 
 h1,
