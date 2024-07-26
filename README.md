@@ -16,7 +16,9 @@ Proof of Concept (POC) for the User Interface of a FinTech Admin Application usi
 
 ## Demo
 
-![Demo](./docs/demo-#1-all-pages.gif)
+![Demo](https://github.com/reduce-map/fintech-admin-vue3-ag-grid/blob/feature/alignments-and-docs/docs/demo-%231-all-pages.gif)
+
+![Demo](https://github.com/reduce-map/fintech-admin-vue3-ag-grid/blob/main/docs/demo-%231-all-pages.gif)
 
 ### Demo Notes
 
@@ -59,6 +61,8 @@ This project uses [Husky](https://typicode.github.io/husky/#/) to manage git hoo
 - [Chris Fritz's Vue Enterprise Boilerplate](https://github.com/bencodezen/vue-enterprise-boilerplate)
 
 - [Brad Frost's Atomic Design](https://atomicdesign.bradfrost.com/)
+
+- [Bon Jovi for the Nice Day](https://www.youtube.com/watch?v=uCg2BoKiuOM)
 
 ## Mind Outcome
 
