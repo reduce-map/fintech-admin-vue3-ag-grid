@@ -31,7 +31,7 @@ Proof of Concept (POC) for the User Interface of a FinTech Admin Application usi
 
 ## Features
 
-Fintech template as POC output for [requirements documentation](./docs/srs)
+Fintech template as POC output for [requirements documentation](./docs/srs.md)
 
 ## Project setup
 
