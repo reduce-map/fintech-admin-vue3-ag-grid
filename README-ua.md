@@ -13,9 +13,7 @@
 
 ## Демо
 
-![Демо](https://github.com/reduce-map/fintech-admin-vue3-ag-grid/blob/feature/alignments-and-docs/docs/demo-%231-all-pages.gif)
-
-![Демо](https://github.com/reduce-map/fintech-admin-vue3-ag-grid/blob/main/docs/demo-%231-all-pages.gif)
+![Demo](https://github.com/reduce-map/fintech-admin-vue3-ag-grid/blob/main/docs/demo-%231-all-pages.gif)
 
 ### Примітки щодо демо
 
