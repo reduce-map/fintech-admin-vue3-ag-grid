@@ -1,6 +1,8 @@
-# FinTech Admin Vue3 Ag-Grid by <img src="/src/assets/reducemap.jpeg" alt="123" width="33" height="33">
+# FinTech Admin Vue3 Ag-Grid
 
 > English | [Українська 🇺🇦](./README-ua.md)
+
+**Live demo:** https://fintech-admin-vue3-ag-grid.vercel.app/
 
 Proof of Concept (POC) for the User Interface of a FinTech Admin Application using:
 
@@ -14,9 +16,7 @@ Proof of Concept (POC) for the User Interface of a FinTech Admin Application usi
 
 ## Demo
 
-[Demo](https://fintech-admin-vue3-ag-grid.vercel.app/)
-
-![123](/src/assets/reducemap.jpeg)
+![Demo](./docs/demo-#1-all-pages.gif)
 
 ### Demo Notes
 
