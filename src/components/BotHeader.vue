@@ -1,5 +1,5 @@
 <template>
-  <PageHeader title="Trading Bot Admin Panel">
+  <PageHeader class="bot-header" title="Trading Bot Admin Panel">
     <template #logo>
       <img src="@/assets/reducemap.jpeg" alt="reducemap" />
     </template>
@@ -11,7 +11,7 @@
       </ButtonGroup>
     </template>
     <template #content>
-      <DescriptionList layout="vertical" :col="4">
+      <DescriptionList layout="horizontal" :col="4">
         <Description :term="isBotEnabled ? 'Big boss:' : 'Small boss:'">Boss</Description>
         <Description term="Department:">Trading</Description>
         <Description term="Purpose:">FTMO Bot</Description>
@@ -70,7 +70,6 @@
     </template>
   </PageHeader>
 
-  <!-- Add also Drawer on Top for m1/m5/m15/m30/h1/h4/h12/h24/d1/d7/d30/d365 and technical indicators and pocs - TPOC / VPOC ? -->
   <Drawer
     v-model="isDrawerOpened"
     title="Bot Settings | Basic Right Drawer "
@@ -113,31 +112,10 @@ const handleEnd = () => {
   deadlineCountDown.value = new Date().getTime() + 111.111 * 1000
   Message.info('Time is up!')
 }
-
-// breadcrumbList and tabList - very-very nice
-
-// const breadcrumbList = ref([
-//   {
-//     title: 'Level 1 Menu',
-//     to: '/'
-//   },
-//   {
-//     title: 'Level 2 Menu',
-//     to: '/'
-//   },
-//   {
-//     title: 'Level 3 Menu'
-//   }
-// ]);
-
-// const tabList = ref([
-//   {
-//     label: 'Details',
-//     name: 'detail'
-//   },
-//   {
-//     label: 'Records',
-//     name: 'record'
-//   }
-// ]);
 </script>
+
+<style lang="scss">
+.bot-header .ivu-page-header-action {
+  overflow: hidden; // adding old school clearfix to the action buttons
+}
+</style>

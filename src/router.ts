@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteLocationNormalizedGeneric, RouteRecordRaw } from 'vue-router'
 import ViewUIPlus from 'view-ui-plus'
 import { useAuthStore } from '@/store/auth.ts'
+import { setBodyClass } from '@/utils'
 
 const routes: RouteRecordRaw[] = [
   // private routes
@@ -60,6 +61,7 @@ const router = createRouter({
 
 router.beforeEach((to: RouteLocationNormalizedGeneric, __: RouteLocationNormalizedGeneric, next) => {
   const authStore = useAuthStore()
+
   ViewUIPlus.LoadingBar.start()
 
   if (to.meta.requiresAuth) {
@@ -74,7 +76,8 @@ router.beforeEach((to: RouteLocationNormalizedGeneric, __: RouteLocationNormaliz
   next()
 })
 
-router.afterEach(() => {
+router.afterEach((to: RouteLocationNormalizedGeneric) => {
+  setBodyClass(to)
   ViewUIPlus.LoadingBar.finish()
 })
 

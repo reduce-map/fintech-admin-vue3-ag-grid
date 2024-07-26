@@ -299,7 +299,6 @@ const handleSubmit = () => {
     if (valid) {
       const formResult = { ...formItem.value, ...checkAllGroup.value }
       Message.info(`Data ready to be send: ${JSON.stringify(formResult, null, 4)} also you can find it in the console`)
-      console.log('Form data:', formResult)
     } else {
       Message.error(`Validation failed`)
     }

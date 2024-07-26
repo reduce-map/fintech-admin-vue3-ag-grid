@@ -8,7 +8,7 @@ import vue from '@vitejs/plugin-vue'
 const baseConfig: UserConfigExport = {
   plugins: [
     vue(),
-    // vueDevTools()
+    // vueDevTools() // uncomment this line to enable vue devtools
   ],
   resolve: {
     alias: [
@@ -28,7 +28,7 @@ const baseConfig: UserConfigExport = {
 }
 
 export default (configEnv: ConfigEnv) => {
-  // sample, can be removed
+  // sample
   setTimeout(() => {
     const envVariables = {
       ...process.env,
@@ -49,6 +49,7 @@ export default (configEnv: ConfigEnv) => {
       console.log(`    key: ${item.key}, value: ${item.value}`)
     })
   }, 10)
+  // end sample
 
   return defineConfig({ ...baseConfig })
 }

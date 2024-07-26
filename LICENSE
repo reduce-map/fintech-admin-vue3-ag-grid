@@ -19,3 +19,12 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+Additional License Information
+
+This project includes components that are licensed under commercial terms. Specifically:
+
+- ag-charts-enterprise: https://www.ag-grid.com/license-pricing/
+- ag-grid-enterprise: https://www.ag-grid.com/license-pricing/
+
+These components require a valid license for use in a production environment. Please refer to their respective licensing pages for more details.

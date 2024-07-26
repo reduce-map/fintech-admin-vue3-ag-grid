@@ -58,14 +58,7 @@
 import { ref, onBeforeMount, onBeforeUnmount } from 'vue'
 import { AgGridVue } from 'ag-grid-vue3'
 import { formatDateTime, getAllCurrenciesFromPrioritizedCountries, getFlagByCurrency } from '@/utils'
-import {
-  ColDef,
-  GridApi,
-  AgGridEvent,
-  CellValueChangedEvent,
-  RowValueChangedEvent,
-  ICellRendererParams,
-} from 'ag-grid-community'
+import { ColDef, GridApi, AgGridEvent, CellValueChangedEvent, ICellRendererParams } from 'ag-grid-community'
 import 'ag-grid-enterprise'
 import * as XLSX from 'xlsx'
 import { Poptip, Message } from 'view-ui-plus'
@@ -193,9 +186,7 @@ const onCellValueChanged = (event: CellValueChangedEvent) => {
   isChanged.value = true
 }
 
-const onRowValueChanged = (event: RowValueChangedEvent) => {
-  const data = event.data
-  console.log('onRowValueChanged: (' + data.base + ', ' + data.quote + ', ' + data.buy + ', ' + data.sell + ')')
+const onRowValueChanged = () => {
   isChanged.value = true
 }
 

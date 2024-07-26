@@ -26,9 +26,9 @@ const authStore = useAuthStore()
 const router = useRouter()
 
 const handleSubmit = (valid: boolean, { username, password }: { username: string; password: string }) => {
-  console.log(valid, username, password)
   if (valid) {
     authStore.setMockUser()
+    Message.success(`Login successful ${username} ${password}`)
     router.push({ name: 'dashboard' })
   } else {
     Message.error(`Form validity is : ${valid}, username: ${username}, password: ${password}`)
