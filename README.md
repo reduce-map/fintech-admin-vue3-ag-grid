@@ -1,16 +1,16 @@
-# FinTech Admin Vue3 Ag-Grid
+# FinTech Admin Vue3 Ag-Grid by <img src="/src/assets/reducemap.jpeg" alt="123" width="33" height="33">
 
-English | [Українська 🇺🇦](./README-ua.md)
+> English | [Українська 🇺🇦](./README-ua.md)
 
-Proof of Concept (POC) of User Interface for FinTech Admin Application with:
+Proof of Concept (POC) for the User Interface of a FinTech Admin Application using:
 
-[Vue 3](https://v3.vuejs.org/), [TypeScript](https://www.typescriptlang.org/)
+- [Vue 3](https://v3.vuejs.org/), [TypeScript](https://www.typescriptlang.org/)
 
-[AG Grid](https://www.ag-grid.com/), [AG Charts](https://charts.ag-grid.com/), [View UI Plus](https://iviewui.com/view-ui-plus/component/view/tree)
+- [AG Grid](https://www.ag-grid.com/), [AG Charts](https://charts.ag-grid.com/), [View UI Plus](https://iviewui.com/view-ui-plus/component/view/tree)
 
-[Vue Router](https://router.vuejs.org/), [Pinia](https://pinia.esm.dev/), [Vue i18n](https://vue-i18n.intlify.dev/),
+- [Vue Router](https://router.vuejs.org/), [Pinia](https://pinia.esm.dev/), [Vue i18n](https://vue-i18n.intlify.dev/),
 
-[Vite](https://vitejs.dev/), [TailwindCSS](https://tailwindcss.com/), [ESLint](https://eslint.org/), [Prettier](https://prettier.io/), [Husky](https://typicode.github.io/husky/#/), [commitlint](https://commitlint.js.org/)
+- [Vite](https://vitejs.dev/), [TailwindCSS](https://tailwindcss.com/), [ESLint](https://eslint.org/), [Prettier](https://prettier.io/), [Husky](https://typicode.github.io/husky/#/), [commitlint](https://commitlint.js.org/)
 
 ## Demo
 
@@ -20,77 +20,48 @@ Proof of Concept (POC) of User Interface for FinTech Admin Application with:
 
 ### Demo Notes
 
-- please mention for enterprise licence for ag grid and ag charts
-
-- For POC demo and presentation also were used
+- **Heads up:** An enterprise license is required for AG Grid and AG Charts.
+- **Note:** The following packages were used for the demo POC but can be removed:
   - vite-plugin-vue-devtools
   - spline
   - countries-list
-  - xlsx - used for export to excel not recommended for production because of security issues
+  - xlsx (used for export to Excel, not recommended for production due to security issues)
 
 ## Features
 
-Fintech template as poc output for [the requirement and documentation](./docs/poc.md)
+Fintech template as POC output for [requirements documentation](./docs/srs)
 
-##
+## Project setup
 
 ```bash
 $ git clone https://github.com/reduce-map/fintech-admin-vue3-ag-grid.git # clone the project
 $ cd fintech-admin-vue3-ag-grid # enter the project directory
 $ pnpm i # Install dependencies
 $ pnpm dev # Start the development server
-
-# preview the production build
-pnpm preview
-# type check
-pnpm type-check
-
-# lint code
-pnpm lint
+$ pnpm build # Build the project
+$ pnpm preview # Preview the production build
+$ pnpm type-check # type check
+$ pnpm lint # lint code
 ```
 
-After cloning the repository and running `pnpm install`, the `prepare` script is automatically run. This script sets up [Husky](https://typicode.github.io/husky/#/) git hooks which help ensure consistent code quality and commit message format. See the [Git Hooks](#git-hooks) section for more details.
-
-## Development mode
-
-```bash
-$ npm run dev # concurrently run all services in development mode
-$ npm run dev:user-gateway # run user-gateway service in development mode
-$ npm run dev:auth-service # run auth-service service in development mode
-$ npm run dev:session-updater # run session-updater service in development mode
-$ npm run dev:overlord-omnisafe # run overlord-omnisafe service in development mode
-```
-
-```bash
-$ npm run build # build all services
-
-```
-
-## Environment Variables
-
-Each service within our monorepo now has its dedicated .env.docker file. Please refer to these files for environment variable settings.
-
-## Linting and Formatting
-
-To ensure code quality and consistency, you can run ESLint and Prettier using the following commands:
-
-```bash
-$ npm run lint # run ESLint
-$ npm run format # run Prettier
-```
+After cloning the repository and running `pnpm install`, the `prepare` script is automatically run. This script sets up [Husky](https://typicode.github.io/husky/#/) git hooks which help ensure consistent code quality and commit message format.
 
 ## Git Hooks
 
-This project uses [Husky](https://typicode.github.io/husky/#/) to manage git hooks. When you commit or push changes, the following actions are triggered:
+This project uses [Husky](https://typicode.github.io/husky/#/) to manage git hooks. When you commit or push changes.
 
-### pre-commit
+## Huge Thanks and Motivation
 
-Before each commit, the `precommit` script is run. This script triggers [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/) to ensure code quality and consistency. If any issues are found that can't be automatically fixed, the commit will be aborted.
+- [vue-admin-template](https://github.com/PanJiaChen/vue-admin-template/) by [PanJiaChen](https://github.com/PanJiaChen)
 
-### pre-push
+- [Project Lines](https://app.spline.design/community/file/b45dff34-af2a-4bf8-bee4-6b8682ac7788) in [spline.design](https://spline.design/) by [Mahmut Elipek](https://app.spline.design/@mahmutelipek)
 
-Before each push, the test suite is run to ensure that all tests pass. If any tests fail, the push will be aborted.
+- [Chris Fritz's Vue Enterprise Boilerplate](https://github.com/bencodezen/vue-enterprise-boilerplate)
 
-## Dev Notes
+- [Brad Frost's Atomic Design](https://atomicdesign.bradfrost.com/)
 
-Details and nuances of the development process can be found in the [dev-notes.md](./docs/dev-notes.md) file.
+## Mind Outcome
+
+- “If a stone flying through the air were conscious, it would think it was flying by its own will,” relies on Spinoza, [original link](https://www.faculty.umb.edu/gary_zabel/Courses/Spinoza/Texts/Spinoza/let6258.htm)
+
+- "It is evident from statistics that resource management is far more important than the resources themselves."
