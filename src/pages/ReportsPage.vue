@@ -51,13 +51,7 @@
 <script setup lang="ts">
 import { ref, onBeforeMount, onBeforeUnmount, defineProps } from 'vue'
 import { AgGridVue } from 'ag-grid-vue3'
-import {
-  ColDef,
-  GridApi,
-  ICellRendererParams,
-  AgGridEvent,
-  CellValueChangedEvent,
-} from 'ag-grid-community'
+import { ColDef, GridApi, ICellRendererParams, AgGridEvent, CellValueChangedEvent } from 'ag-grid-community'
 import 'ag-grid-enterprise'
 import * as XLSX from 'xlsx'
 import { Message, Poptip } from 'view-ui-plus'

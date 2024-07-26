@@ -58,13 +58,7 @@
 import { ref, onBeforeMount, onBeforeUnmount } from 'vue'
 import { AgGridVue } from 'ag-grid-vue3'
 import { formatDateTime, getAllCurrenciesFromPrioritizedCountries, getFlagByCurrency } from '@/utils'
-import {
-  ColDef,
-  GridApi,
-  AgGridEvent,
-  CellValueChangedEvent,
-  ICellRendererParams,
-} from 'ag-grid-community'
+import { ColDef, GridApi, AgGridEvent, CellValueChangedEvent, ICellRendererParams } from 'ag-grid-community'
 import 'ag-grid-enterprise'
 import * as XLSX from 'xlsx'
 import { Poptip, Message } from 'view-ui-plus'
