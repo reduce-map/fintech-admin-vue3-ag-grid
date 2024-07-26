@@ -12,64 +12,36 @@ Proof of Concept (POC) of User Interface for FinTech Admin Application with:
 
 [Vite](https://vitejs.dev/), [TailwindCSS](https://tailwindcss.com/), [ESLint](https://eslint.org/), [Prettier](https://prettier.io/), [Husky](https://typicode.github.io/husky/#/), [commitlint](https://commitlint.js.org/)
 
-
-
 ## Demo
 
 [Demo](https://fintech-admin-vue3-ag-grid.vercel.app/)
 
 ![123](/src/assets/reducemap.jpeg)
 
-For Demo and POC presentation also were used: vite-plugin-vue-devtools, spline, countries-list, xlsx
+### Demo Notes
 
-xlsx is used for export to excel not recommended for production because of security issues
+- please mention for enterprise licence for ag grid and ag charts
 
-They can be easily replaced with other libraries or components.
-
-Please mention for enterprise licence for ag grid and ag charts
-
-
-
-
-
+- For POC demo and presentation also were used
+  - vite-plugin-vue-devtools
+  - spline
+  - countries-list
+  - xlsx - used for export to excel not recommended for production because of security issues
 
 ## Features
 
 Fintech template as poc output for [the requirement and documentation](./docs/poc.md)
 
-For POC presentation also were used: vite-plugin-vue-devtools, spline, countries-list, xlsx
-
-Please mention for enterprise licence for ag grid and ag charts
-
-## Build Setup
+##
 
 ```bash
-# Clone the project
-git clone https://github.com/reduce-map/fintech-admin-vue3-ag-grid.git
+$ git clone https://github.com/reduce-map/fintech-admin-vue3-ag-grid.git # clone the project
+$ cd fintech-admin-vue3-ag-grid # enter the project directory
+$ pnpm i # Install dependencies
+$ pnpm dev # Start the development server
 
-# Enter the project directory
-cd fintech-admin-vue3-ag-grid
-
-# Install dependencies
-pnpm i
-
-# Start the server
-pnpm dev
-```
-
-## Build
-
-```bash
-# Build
-pnpm build
-```
-
-Advanced:
-
-```bash
 # preview the production build
 pnpm preview
-
 # type check
 pnpm type-check
 
@@ -77,24 +49,7 @@ pnpm type-check
 pnpm lint
 ```
 
-## Huge thanks to:
-- (Chris Fritz's Vue Enterprise Boilerplate)[https://github.com/bencodezen/vue-enterprise-boilerplate]
-- (Brad Frost's Atomic Design)[https://atomicdesign.bradfrost.com/]
-- (vue-admin-template)[https://github.com/PanJiaChen/vue-admin-template/]
-
-## Installation
-
-After cloning the repository and running `npm install`, the `prepare` script is automatically run. This script sets up [Husky](https://typicode.github.io/husky/#/) git hooks which help ensure consistent code quality and commit message format. See the [Git Hooks](#git-hooks) section for more details.
-
-```bash
-$ npm install
-```
-
-### npm Configuration
-
-An .npmrc file is needed for Docker and for private @silent-team npm packages installation. The file should be located in the root of the project.
-
-**Note:** Without .npmrc you will get an error. The repo contains private @silent-team packages.
+After cloning the repository and running `pnpm install`, the `prepare` script is automatically run. This script sets up [Husky](https://typicode.github.io/husky/#/) git hooks which help ensure consistent code quality and commit message format. See the [Git Hooks](#git-hooks) section for more details.
 
 ## Development mode
 
@@ -106,20 +61,12 @@ $ npm run dev:session-updater # run session-updater service in development mode
 $ npm run dev:overlord-omnisafe # run overlord-omnisafe service in development mode
 ```
 
-## Building the app
-
-Before starting the application, it's recommended to build it first. This will transpile the TypeScript code into JavaScript, which can then be run directly by Node.js. This step is especially important if you're running the application in a production environment.
-
 ```bash
 $ npm run build # build all services
-$ npm run build:user-gateway # build user-gateway service
-$ npm run build:auth-service # build auth-service service
-$ npm run build:data-provider # build data-provider service
-$ npm run build:session-updater # build session-updater service
-$ npm run build:overlord-omnisafe # build overlord-omnisafe service
+
 ```
 
-## Service-Specific Environment Variables
+## Environment Variables
 
 Each service within our monorepo now has its dedicated .env.docker file. Please refer to these files for environment variable settings.
 
@@ -146,4 +93,4 @@ Before each push, the test suite is run to ensure that all tests pass. If any te
 
 ## Dev Notes
 
-As you're scr
+Details and nuances of the development process can be found in the [dev-notes.md](./docs/dev-notes.md) file.
