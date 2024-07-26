@@ -62,7 +62,6 @@ const router = createRouter({
 router.beforeEach((to: RouteLocationNormalizedGeneric, __: RouteLocationNormalizedGeneric, next) => {
   const authStore = useAuthStore()
 
-  setBodyClass(to)
   ViewUIPlus.LoadingBar.start()
 
   if (to.meta.requiresAuth) {
@@ -77,7 +76,8 @@ router.beforeEach((to: RouteLocationNormalizedGeneric, __: RouteLocationNormaliz
   next()
 })
 
-router.afterEach(() => {
+router.afterEach((to: RouteLocationNormalizedGeneric) => {
+  setBodyClass(to)
   ViewUIPlus.LoadingBar.finish()
 })
 
