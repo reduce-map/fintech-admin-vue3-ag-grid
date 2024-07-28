@@ -62,7 +62,7 @@ This project uses [Husky](https://typicode.github.io/husky/#/) to manage git hoo
 
 - [Bon Jovi for the Nice Day](https://www.youtube.com/watch?v=uCg2BoKiuOM)
 
-## Mind Outcome
+## Context of Mind
 
 - “If a stone flying through the air were conscious, it would think it was flying by its own will,” relies on Spinoza, [original link](https://www.faculty.umb.edu/gary_zabel/Courses/Spinoza/Texts/Spinoza/let6258.htm)
 
